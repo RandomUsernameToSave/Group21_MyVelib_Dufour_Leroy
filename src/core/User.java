@@ -19,7 +19,22 @@ public class User {
 		this.userID = java.util.UUID.randomUUID();
 		
 	}
+	public Cards getRegistrationCard() {
+		return this.registrationCard;
+	}
+	public int getTimecreditBalance() {
+		return this.timecreditBalance;
+	}
+	public int gettotalCharge() {
+		return this.totalCharge;
+	}
 	
+	public void setTimecreditBalance(int minutes) {
+		this.timecreditBalance = minutes;
+	}
+	public void setTotalCharge(int minutes) {
+		this.totalCharge = minutes;
+	}
 
 	public void returnBike() {
 		
