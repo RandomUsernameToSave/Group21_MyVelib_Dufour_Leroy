@@ -3,7 +3,7 @@ package core;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
+//il me reste à mettre ce que j'ai ajouté dans standard ici mais en vrai je pense qu'on peut le définir comme juste un paramtre différent de la classe station
 public class plusStation implements DockingStation {
 	private UUID stationID;
 	private boolean onService;
