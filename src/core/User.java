@@ -11,13 +11,14 @@ public class User {
 	private Cards registrationCard;
 	private int timecreditBalance=0;
 	private int totalCharge=0;
+	private int nbRides=0;
 	
-	public User(String name, Cards creditCard,Cards registrationCard) {
+	public User(String name, Cards creditCard,Cards registrationCard, int nbRides) {
 		this.name = name;
 		this.creditCard = creditCard;
 		this.registrationCard = registrationCard;
 		this.userID = java.util.UUID.randomUUID();
-		
+		this.nbRides = nbRides;
 	}
 	public Cards getRegistrationCard() {
 		return this.registrationCard;
@@ -28,6 +29,12 @@ public class User {
 	public int gettotalCharge() {
 		return this.totalCharge;
 	}
+	public int getnbRides() {
+		return this.nbRides;
+	}
+	public UUID getuserID() {
+		return this.userID;
+	}
 	
 	public void setTimecreditBalance(int minutes) {
 		this.timecreditBalance = minutes;
@@ -37,7 +44,7 @@ public class User {
 	}
 
 	public void returnBike() {
-		
+		this.nbRides ++;
 	}
 	
 	
