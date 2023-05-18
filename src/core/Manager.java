@@ -11,7 +11,9 @@ public class Manager {
     public Manager() {
         users = new HashMap<>();
         stations = new HashMap<>();
+        
     }
+    //là on pourrait rajouter des fonctions qui ajoutes des élements si la liste est vide
 
     public void addUser(User user) {
         users.put(user.getuserID(), user);
@@ -50,4 +52,36 @@ public class Manager {
             System.out.println("User with ID " + id + " does not exist.");
         }
     }
+    public void displayOnlineStations() {
+        System.out.println("Online Stations:");
+        for (StandardStation station : stations.values()) {
+            if (station.isWorking()) {
+            System.out.println("Station ID: " + station.getstationID()+ "is working!");
+            }
+        }
+    }
+
+    public void displayOfflineStations() {
+        System.out.println("Offline Stations:");
+        for (StandardStation station : stations.values()) {
+            if (!station.isWorking()) {
+            	System.out.println("Station ID: " + station.getstationID());
+            }
+ 
+            
+        }
+    }
+
+    public void displayUsers() {
+        System.out.println("Users:");
+        for (User user : users.values()) {
+            System.out.println("User ID: " + user.getuserID());
+        }
+    }
+    public void displayReportSystem() {
+    displayOnlineStations();
+    displayOfflineStations();
+    displayUsers();
+    }
+    
 }
