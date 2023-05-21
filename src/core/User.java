@@ -6,7 +6,7 @@ public class User {
 
 	private String name;
 	private UUID userID;
-	private int GPS;
+	private GPS userGPS;
 	private Cards creditCard;
 	private Cards registrationCard;
 	private int timecreditBalance=0;

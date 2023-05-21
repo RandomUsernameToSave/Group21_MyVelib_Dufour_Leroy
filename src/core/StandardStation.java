@@ -6,7 +6,7 @@ import java.util.UUID;
 public class StandardStation implements DockingStation{
 	private UUID stationID;
 	private boolean onService;
-	private int GPS;
+	private GPS stationGPS;
 	private ArrayList<Parking> listSlots = new ArrayList<Parking>();
 	
 	public StandardStation(int nbreParking) {

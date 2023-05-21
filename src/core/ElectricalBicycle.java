@@ -4,5 +4,5 @@ import java.util.UUID;
 
 public class ElectricalBicycle implements Bicycle {
 	private UUID bicycleID;
-	private int GPS;	
+	private GPS bicycleGPS;	
 }
