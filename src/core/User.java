@@ -4,6 +4,11 @@ import java.util.UUID;
 
 public class User {
 
+	/**
+	 * <h1> Main User Class </h1>
+	 * Create User and store informations on it, every User has a unique I.
+	 * 
+	 * */
 	private String name;
 	private UUID userID;
 	private GPS userGPS;

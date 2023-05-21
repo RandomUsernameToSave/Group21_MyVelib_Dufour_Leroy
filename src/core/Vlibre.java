@@ -1,5 +1,8 @@
 package core;
 
+/**
+ * Vlibre Card implementation 
+ * */
 public class Vlibre implements Cards,BikeVisitor {
 
 	private int userID;
@@ -18,6 +21,10 @@ public class Vlibre implements Cards,BikeVisitor {
 		return 0;
 	}
 
+	/**
+	 * Vlibre Visitor Pattern
+	 * If less than 60 minutes, we just remove this time from the user balance
+	 * Else the user pay for the hour*/
 	@Override
 	public int visit(ElectricalBicycle bike) {
 		int minutes = bike.getTime();

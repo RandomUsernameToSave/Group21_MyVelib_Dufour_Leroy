@@ -1,5 +1,7 @@
 package core;
-
+/**
+ * Vmax Card implementation 
+ * */
 public class Vmax implements Cards,BikeVisitor {
 	private int userID;
 	private String cardType = "Vmax";
