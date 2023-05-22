@@ -61,5 +61,17 @@ public class plusStation implements DockingStation {
 		parking.changeState("free");
 		user.setIsRentingBike(true);
 	}
+	public void dropBike (int parkingSlot,User user) {
+		// check if parkingSlot is empty
+		Parking parking = listSlots.get(parkingSlot);
+		Bicycle bike = user.getCurrentBicycle();
+		
+		parking.changeState("occupied");
+		parking.setCurrentBicycle(bike);
+		user.setCurrentBicycle(null);
+		user.setIsRentingBike(false);
+		
+	}
+	
 	
 }

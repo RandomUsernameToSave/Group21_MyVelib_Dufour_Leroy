@@ -35,5 +35,8 @@ public class Parking {
 	public Bicycle getCurrentBicycle() {
 		return this.CurrentBicycle;
 	}
+	public void setCurrentBicycle(Bicycle bike) {
+		CurrentBicycle = bike;
+	}
 	
 }

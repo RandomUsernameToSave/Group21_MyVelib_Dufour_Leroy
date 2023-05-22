@@ -61,8 +61,17 @@ public class User {
 		this.totalCharge = minutes;
 	}
 
-	public void returnBike() {
+	public void returnBike(DockingStation station, int parkingSlot) {
 		this.nbRides ++;
+		
+		
+		// calculate cost
+		double price = registrationCard.getPrice(currentBicycle.getTime());
+		totalCharge += price; // pay for the price
+		
+		station.dropBike(parkingSlot, this);
+		
+		
 	}
 	
 	

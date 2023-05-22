@@ -27,9 +27,23 @@ public class StandardStation implements DockingStation{
 		
 		// on recup le velo à la position du parking
 		Bicycle bike = parking.getCurrentBicycle();
+		
+		parking.setCurrentBicycle(null);
 		user.setCurrentBicycle(bike);
 		parking.changeState("free");
 		user.setIsRentingBike(true);
+	}
+	
+	public void dropBike (int parkingSlot,User user) {
+		// check if parkingSlot is empty
+		Parking parking = listSlots.get(parkingSlot);
+		Bicycle bike = user.getCurrentBicycle();
+		
+		parking.changeState("occupied");
+		parking.setCurrentBicycle(bike);
+		user.setCurrentBicycle(null);
+		user.setIsRentingBike(false);
+		
 	}
 	
 	
