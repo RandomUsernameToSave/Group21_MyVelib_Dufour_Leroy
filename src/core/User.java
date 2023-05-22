@@ -17,6 +17,8 @@ public class User {
 	private int timecreditBalance=0;
 	private int totalCharge=0;
 	private int nbRides=0;
+	private boolean isRentingBike = false;
+	private Bicycle currentBicycle = null;
 	
 	public User(String name, Cards creditCard,Cards registrationCard, int nbRides) {
 		this.name = name;
@@ -24,6 +26,17 @@ public class User {
 		this.registrationCard = registrationCard;
 		this.userID = java.util.UUID.randomUUID();
 		this.nbRides = nbRides;
+	}
+	
+	public Bicycle getCurrentBicycle() {
+		return currentBicycle;
+	}
+	
+	public void setCurrentBicycle(Bicycle bike) {
+		currentBicycle = bike;
+	}
+	public void setIsRentingBike(boolean b) {
+		this.isRentingBike = b;
 	}
 	public Cards getRegistrationCard() {
 		return this.registrationCard;
@@ -50,6 +63,20 @@ public class User {
 
 	public void returnBike() {
 		this.nbRides ++;
+	}
+	
+	
+	public void rentingBike(DockingStation station, int parkingSlot) {
+		// Authentification à faire
+		
+		if (isRentingBike) {
+			System.out.println("Is already renting a bike");
+		}
+		else {
+			station.pickBike(parkingSlot, this);
+		}
+		
+		
 	}
 	
 	

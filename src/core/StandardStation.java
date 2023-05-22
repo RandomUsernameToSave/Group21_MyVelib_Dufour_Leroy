@@ -22,6 +22,16 @@ public class StandardStation implements DockingStation{
 			this.listSlots.add( new Parking() ); }
 		}
 		
+	public void pickBike(int parkingSlot, User user) {
+		Parking parking = listSlots.get(parkingSlot);
+		
+		// on recup le velo à la position du parking
+		Bicycle bike = parking.getCurrentBicycle();
+		user.setCurrentBicycle(bike);
+		parking.changeState("free");
+		user.setIsRentingBike(true);
+	}
+	
 	
 		public GPS getGPS() {
 			return this.stationGPS;

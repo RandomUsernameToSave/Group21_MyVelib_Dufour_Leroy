@@ -52,5 +52,14 @@ public class plusStation implements DockingStation {
         }
         return false;
 	}
+	public void pickBike(int parkingSlot, User user) {
+		Parking parking = listSlots.get(parkingSlot);
+		
+		// on recup le velo à la position du parking
+		Bicycle bike = parking.getCurrentBicycle();
+		user.setCurrentBicycle(bike);
+		parking.changeState("free");
+		user.setIsRentingBike(true);
+	}
 	
 }
