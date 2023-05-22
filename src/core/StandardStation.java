@@ -22,6 +22,10 @@ public class StandardStation implements DockingStation{
 			this.listSlots.add( new Parking() ); }
 		}
 		
+	
+		public GPS getGPS() {
+			return this.stationGPS;
+		}
 		public int countFreePlaces() {
 	        int freeCount = 0;
 	        for (Parking place : listSlots) {
@@ -30,10 +34,26 @@ public class StandardStation implements DockingStation{
 	            }
 	        }
 	        return freeCount;
+		}
+		public boolean hasBikeType(String bikeType) {
 	        
-	        
-	        
-	}
+	        for (Parking place : listSlots) {
+	        	if (bikeType == "Electrical") {
+	        		if (place.getCurrentBicycle() instanceof ElectricalBicycle) {
+		                return true;
+		            }
+	        	}
+	        	if (bikeType == "Mechanical") {
+	        		if (place.getCurrentBicycle() instanceof MechanicalBicycle) {
+		                return true;
+		            }
+	        	}
+	            
+	        }
+	        return false;
+		}
+		
+		
 		public UUID getstationID() {
 			return this.stationID;
 		}

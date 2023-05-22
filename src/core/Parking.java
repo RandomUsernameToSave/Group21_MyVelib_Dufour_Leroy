@@ -5,6 +5,7 @@ import java.util.UUID;
 public class Parking {
 	private UUID parkingID;
 	private String parkingState;// free, occupied, out-of-order est ce que là on ferait pas un enum?
+	private Bicycle CurrentBicycle;
 	
 	public Parking () {
 		this.parkingID = java.util.UUID.randomUUID();
@@ -29,5 +30,9 @@ public class Parking {
 	}
 	public boolean isOutOfOrder() {
 		return parkingState == "out-of-order"; //ces lignes dépendent de comment on a défini parkingstate avant
+	}
+	
+	public Bicycle getCurrentBicycle() {
+		return this.CurrentBicycle;
 	}
 }
