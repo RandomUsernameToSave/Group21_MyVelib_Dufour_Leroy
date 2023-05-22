@@ -16,15 +16,15 @@ public class StandardStation implements DockingStation{
 		this.stationID = java.util.UUID.randomUUID();
 		this.onService = true;
 		this.nbfree = nbreParking;
-		this.nboccupied = 0
+		this.nboccupied = 0;
 		
 		for (int i=0; i<nbreParking; ++i){
-			this.listSlots.add( new Parking() ); 
+			this.listSlots.add( new Parking() ); }
 		}
 		
 		public int countFreePlaces() {
 	        int freeCount = 0;
-	        for (listSlots place : places) {//là jsp pk il comprends pas
+	        for (Parking place : listSlots) {
 	            if (place.isFree()) {
 	                freeCount++;
 	            }
@@ -44,7 +44,7 @@ public class StandardStation implements DockingStation{
 		
 		public int countOccupiedPlaces() {
 	        int occupiedCount = 0;
-	        for (listSlots place : places) {
+	        for (Parking place : listSlots) {
 	            if (place.isOccupied()) {
 	                occupiedCount++;
 	            }
@@ -53,7 +53,7 @@ public class StandardStation implements DockingStation{
 	    }
 		public int countOutOfOrderPlaces() {
 	        int OutOfOrder = 0;
-	        for (Place place : places) {
+	        for (Parking place : listSlots) {
 	            if (!place.isOccupied()) {
 	            	OutOfOrder++;
 	            }
