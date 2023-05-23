@@ -2,6 +2,7 @@ package test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import core.GPS;
 import java.util.ArrayList;
 import java.util.UUID;
 import core.CardsFactory;
@@ -19,7 +20,7 @@ class DockingStationTest {
 
 	@Test
 	void CountFreePlaceOfA4parkingFreeStationStandard() {
-		DockingStation station = new StandardStation(4);
+		DockingStation station = new StandardStation(4,new GPS());
 		
 		if (station.countFreePlaces()==4) {
 			assert(true);
@@ -30,7 +31,7 @@ class DockingStationTest {
 	}
 	@Test
 	void CountFreePlaceOfA4parkingFreeStationPlus() {
-		DockingStation station = new plusStation(4);
+		DockingStation station = new plusStation(4, new GPS());
 		
 		if (station.countFreePlaces()==4) {
 			assert(true);
@@ -42,7 +43,7 @@ class DockingStationTest {
 	
 	@Test
 	void DoesTheStationHasElectrical() {
-		DockingStation station = new plusStation(4);
+		DockingStation station = new plusStation(4, new GPS());
 		ArrayList<Parking> listSlots = station.getListSlots();
 		BicycleFactory Factory = new BicycleFactory();
 		Bicycle bike = Factory.getBicycle("Electrical");
@@ -65,7 +66,7 @@ class DockingStationTest {
 		
 		User Thomas = new User("Thomas", UUID.randomUUID(), card);
 		
-		DockingStation station = new plusStation(4);
+		DockingStation station = new plusStation(4,new GPS());
 		ArrayList<Parking> listSlots = station.getListSlots();
 		
 		Bicycle bike = Factory.getBicycle("Electrical");
@@ -90,7 +91,7 @@ class DockingStationTest {
 		
 		User Thomas = new User("Thomas", UUID.randomUUID(), card);
 		
-		DockingStation station = new plusStation(4);
+		DockingStation station = new plusStation(4, new GPS());
 		ArrayList<Parking> listSlots = station.getListSlots();
 		
 		Bicycle bike = Factory.getBicycle("Electrical");

@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.UUID;
-
+import core.GPS;
 import org.junit.jupiter.api.Test;
 
 import core.Bicycle;
@@ -26,7 +26,7 @@ class TestUser {
 		
 		User Thomas = new User("Thomas", UUID.randomUUID(), card);
 		
-		DockingStation station = new plusStation(4);
+		DockingStation station = new plusStation(4,new GPS());
 		ArrayList<Parking> listSlots = station.getListSlots();
 		
 		Bicycle bikeElec = Factory.getBicycle("Electrical");

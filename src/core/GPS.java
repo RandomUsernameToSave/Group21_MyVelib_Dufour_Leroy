@@ -5,12 +5,12 @@ public class GPS {
 	private double x;
 	private double y;
 	
-	GPS() {
+	public GPS() {
 		this.x=0;
 		this.y=0;
 
 	}
-	GPS(double x,double y, double z) {
+	public GPS(double x,double y) {
 		this.x=x;
 		this.y=y;
 

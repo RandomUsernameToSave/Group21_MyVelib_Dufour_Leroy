@@ -2,6 +2,11 @@ package core;
 
 public class NoCard implements Cards,BikeVisitor {
 
+	
+	private User user;
+	private String cardType;
+	
+	
 	@Override
 	public int visit(ElectricalBicycle bike) {
 		int minutes = bike.getTime();
@@ -23,8 +28,13 @@ public class NoCard implements Cards,BikeVisitor {
 
 	@Override
 	public String getCardType() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.cardType;
+	}
+
+	@Override
+	public void setUser(User user) {
+		this.user = user;
+		
 	}
 
 }

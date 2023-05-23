@@ -20,7 +20,7 @@ class TestCardsFactory {
 	@Test
 	void ifCardsRequiredIsVlibreReturnVlibre() {
 		CardsFactory Factory = new CardsFactory();
-		Cards card = Factory.getCards("Vlibre",UUID.randomUUID());
+		Cards card = Factory.getCards("Vlibre");
 		if (card instanceof Vlibre) {
 			assert(true);
 		}
@@ -32,7 +32,7 @@ class TestCardsFactory {
 	@Test
 	void ifCardsRequiredIsVmaxReturnVmax() {
 		CardsFactory Factory = new CardsFactory();
-		Cards card = Factory.getCards("Vmax",UUID.randomUUID());
+		Cards card = Factory.getCards("Vmax");
 		if (card instanceof Vmax) {
 			assert(true);
 		}
@@ -43,7 +43,7 @@ class TestCardsFactory {
 	@Test
 	void ifCardsRequiredIsNotVmaxNorVlibreReturnNull() {
 		CardsFactory Factory = new CardsFactory();
-		Cards card = Factory.getCards("dfdjidfhs",UUID.randomUUID());
+		Cards card = Factory.getCards("dfdjidfhs");
 		if (card ==null) {
 			assert(true);
 		}

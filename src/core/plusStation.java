@@ -12,10 +12,10 @@ public class plusStation implements DockingStation {
 	private GPS stationGPS;
 	private ArrayList<Parking> listSlots = new ArrayList<Parking>();
 	
-	public plusStation(int nbreParking) {
+	public plusStation(int nbreParking, GPS stationGPS) {
 		this.stationID = java.util.UUID.randomUUID();
 		this.onService = true;
-		
+		this.stationGPS = stationGPS;
 		for (int i=0; i<nbreParking; ++i){
 			this.listSlots.add( new Parking() ); // a voir si on fait pas une classe parking (limite une nested class)
 		}

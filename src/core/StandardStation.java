@@ -12,11 +12,12 @@ public class StandardStation implements DockingStation{
 	private int nboccupied; //est ce que ya des static et tt ici?
 	//il veulent aussi que je caractérise son occupation dans la question 4 bizarre
 	
-	public StandardStation(int nbreParking) {
+	public StandardStation(int nbreParking, GPS stationGPS) {
 		this.stationID = java.util.UUID.randomUUID();
 		this.onService = true;
 		this.nbfree = nbreParking;
 		this.nboccupied = 0;
+		this.stationGPS = stationGPS;
 		
 		for (int i=0; i<nbreParking; ++i){
 			this.listSlots.add( new Parking() ); }
