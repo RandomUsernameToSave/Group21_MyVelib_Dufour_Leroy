@@ -6,11 +6,11 @@ import java.util.UUID;
  * Vmax Card implementation 
  * */
 public class Vmax implements Cards,BikeVisitor {
-	private UUID userID;
+	private User user;
 	private String cardType = "Vmax";
 	
-	public Vmax(UUID userID) {
-		this.userID = userID;
+	public Vmax() {
+
 	}
 	
 	public String getCardType() {
@@ -40,5 +40,9 @@ public class Vmax implements Cards,BikeVisitor {
 		else {
 			return minutes/60;
 		}
+	}
+	public void setUser(User user) {
+		this.user = user;
+		
 	}
 }

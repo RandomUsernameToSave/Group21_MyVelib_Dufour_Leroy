@@ -4,12 +4,12 @@ import java.util.UUID;
 
 public class CardsFactory {
 
-	public Cards getCards(String cardsType, UUID userID) {
+	public Cards getCards(String cardsType) {
 		if (cardsType=="Vlibre") {
-			return new Vlibre(userID);
+			return new Vlibre();
 		}
 		if (cardsType=="Vmax") {
-			return new Vmax(userID);
+			return new Vmax();
 		}
 		return null;
 	}

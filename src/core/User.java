@@ -20,12 +20,12 @@ public class User {
 	private boolean isRentingBike = false;
 	private Bicycle currentBicycle = null;
 	
-	public User(String name, UUID creditCard,Cards registrationCard, int nbRides) {
+	public User(String name, UUID creditCard,Cards registrationCard) {
 		this.name = name;
 		this.creditCard = creditCard;
 		this.registrationCard = registrationCard;
+		registrationCard.setUser(this);
 		this.userID = java.util.UUID.randomUUID();
-		this.nbRides = nbRides;
 	}
 	
 	public Bicycle getCurrentBicycle() {

@@ -7,11 +7,11 @@ import java.util.UUID;
  * */
 public class Vlibre implements Cards,BikeVisitor {
 
-	private UUID userID;
+	private User user;
 	private String cardType;
 	
-	public Vlibre(UUID userID) {
-		this.userID = userID;
+	public Vlibre() {
+		
 		this.cardType = "Vlibre";
 	}
 	
@@ -84,5 +84,11 @@ public class Vlibre implements Cards,BikeVisitor {
 			
 			
 		}
+	}
+
+	@Override
+	public void setUser(User user) {
+		this.user = user;
+		
 	}
 }
