@@ -1,14 +1,16 @@
 package core;
 
+import java.util.UUID;
+
 /**
  * Vlibre Card implementation 
  * */
 public class Vlibre implements Cards,BikeVisitor {
 
-	private int userID;
+	private UUID userID;
 	private String cardType;
 	
-	public Vlibre(int userID) {
+	public Vlibre(UUID userID) {
 		this.userID = userID;
 		this.cardType = "Vlibre";
 	}

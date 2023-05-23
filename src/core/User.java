@@ -12,7 +12,7 @@ public class User {
 	private String name;
 	private UUID userID;
 	private GPS userGPS;
-	private Cards creditCard;
+	private UUID creditCard; // on va la représenter comme ça pas la peine de coder une banque
 	private Cards registrationCard;
 	private int timecreditBalance=0;
 	private int totalCharge=0;
@@ -20,7 +20,7 @@ public class User {
 	private boolean isRentingBike = false;
 	private Bicycle currentBicycle = null;
 	
-	public User(String name, Cards creditCard,Cards registrationCard, int nbRides) {
+	public User(String name, UUID creditCard,Cards registrationCard, int nbRides) {
 		this.name = name;
 		this.creditCard = creditCard;
 		this.registrationCard = registrationCard;

@@ -72,6 +72,9 @@ public class plusStation implements DockingStation {
 		user.setIsRentingBike(false);
 		
 	}
+	public ArrayList<Parking> getListSlots() {
+		return listSlots;
+	}
 	
 	
 }

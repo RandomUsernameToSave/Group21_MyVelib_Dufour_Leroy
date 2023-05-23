@@ -2,7 +2,7 @@ package core;
 
 public class BicycleFactory {
 	
-	public Bicycle getCards(String bicycleType) {
+	public Bicycle getBicycle(String bicycleType) {
 		if (bicycleType=="Mechanical") {
 			return new MechanicalBicycle();
 		}

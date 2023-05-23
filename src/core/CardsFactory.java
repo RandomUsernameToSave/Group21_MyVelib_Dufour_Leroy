@@ -1,8 +1,10 @@
 package core;
 
+import java.util.UUID;
+
 public class CardsFactory {
 
-	public Cards getCards(String cardsType, int userID) {
+	public Cards getCards(String cardsType, UUID userID) {
 		if (cardsType=="Vlibre") {
 			return new Vlibre(userID);
 		}

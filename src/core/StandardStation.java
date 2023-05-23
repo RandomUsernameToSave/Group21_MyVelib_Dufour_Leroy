@@ -34,6 +34,10 @@ public class StandardStation implements DockingStation{
 		user.setIsRentingBike(true);
 	}
 	
+	public ArrayList<Parking> getListSlots() {
+		return listSlots;
+	}
+	
 	public void dropBike (int parkingSlot,User user) {
 		// check if parkingSlot is empty
 		Parking parking = listSlots.get(parkingSlot);

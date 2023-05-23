@@ -1,12 +1,15 @@
 package core;
+
+import java.util.UUID;
+
 /**
  * Vmax Card implementation 
  * */
 public class Vmax implements Cards,BikeVisitor {
-	private int userID;
+	private UUID userID;
 	private String cardType = "Vmax";
 	
-	public Vmax(int userID) {
+	public Vmax(UUID userID) {
 		this.userID = userID;
 	}
 	
