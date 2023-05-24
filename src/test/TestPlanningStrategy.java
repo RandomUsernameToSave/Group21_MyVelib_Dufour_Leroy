@@ -13,12 +13,12 @@ import core.Bicycle;
 import core.BicycleFactory;
 import core.DockingStation;
 import core.StandardStation;
-import core.optimalRidePlanning;
+import core.OptimalRidePlanning;
 
 class TestPlanningStrategy {
 
 	@Test
-	void testIfItReallyIsTheClosest() {
+	void testStandardStationIsClosest4StationsClosestIsStation3() {
 		DockingStation station = new StandardStation(4, new GPS(1.,0.));
 		DockingStation station1 = new StandardStation(4, new GPS(2.,0.));
 		DockingStation station2 = new StandardStation(4, new GPS(3.,0.));
@@ -39,7 +39,7 @@ class TestPlanningStrategy {
 		listStation.add(station);
 		GPS startGPS = new GPS(0.,0.);
 		GPS endGPS = new GPS(10.,0.);
-		DockingStation[] solution = new optimalRidePlanning().RidePlanning(startGPS, endGPS, listStation, "Mechanical");
+		DockingStation[] solution = new OptimalRidePlanning().RidePlanning(startGPS, endGPS, listStation, "Mechanical");
 		
 		if (solution[0] == station1 & solution[1] == station3 ) {
 			assert(true);
