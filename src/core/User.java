@@ -63,6 +63,33 @@ public class User {
 		this.totalCharge = minutes;
 	}
 
+	/**
+	 * Drop the bike and charge the User with the calculated cost using his registrationCard
+	 * The station should have an empty slot. If not the function will not drop the bicycle
+	 * at the station.
+	 * 
+	 * @param station the docking station where the user is returning the bicycle
+	 * @param minutes The number of minutes the user has rented the bike
+	 * 
+	 * Example : 
+	 * 
+	 * User user = new User("Alice");
+	 * DockingStation station = new StandardStation(4, new GPS(0.,0.));
+	 * for (Parking park : station) {
+				if (Math.random()<=0.7) {
+					if (Math.random()<=0.3) {
+						park.setCurrentBicycle(bicycleFactory.getBicycle("Electrical") );
+					}
+					else {
+						park.setCurrentBicycle(bicycleFactory.getBicycle("Mechanical") );
+					}
+				}
+	 * user.pickBike(station);
+	 * user.returnBike(station,10);
+	 * 
+	 * Here the user rented the bike for 10 minutes
+	 * 
+	 * */
 	public void returnBike(DockingStation station, int minutes) {
 		this.nbRides ++;
 		

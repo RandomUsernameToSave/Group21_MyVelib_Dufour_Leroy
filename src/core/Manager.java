@@ -22,14 +22,14 @@ public class Manager {
         stations.put(station.getstationID(), station);
     }
 
-    public User getUserByID(int id) {//peut etre que id c'est un string ici parceque uuid?
+    public User getUserByID(UUID id) {//peut etre que id c'est un string ici parceque uuid?
         return users.get(id);
     }
-    public StandardStation getStationByID(int id) {
+    public StandardStation getStationByID(UUID id) {
         return stations.get(id);
     }
 
-    public void displayUserReport(int id) {
+    public void displayUserReport(UUID id) {
         User user = getUserByID(id);
         if (user != null) {
             System.out.println("User ID: " + user.getuserID());
@@ -40,7 +40,7 @@ public class Manager {
             System.out.println("User with ID " + id + " does not exist.");
         }
     }
-    public void displayStationReport(int id) {
+    public void displayStationReport(UUID id) {
         StandardStation station = getStationByID(id);
         if (station != null) {
             System.out.println("Station ID: " + station.getstationID());
