@@ -28,11 +28,31 @@ public class StandardStation implements DockingStation{
 		
 		// on recup le velo à la position du parking
 		Bicycle bike = parking.getCurrentBicycle();
-		bike.setUser(user);
-		parking.setCurrentBicycle(null);
-		user.setCurrentBicycle(bike);
-		parking.changeState("free");
-		user.setIsRentingBike(true);
+		if (!(bike == null)) {
+			bike.setUser(user);
+			parking.setCurrentBicycle(null);
+			user.setCurrentBicycle(bike);
+			parking.changeState("free");
+			user.setIsRentingBike(true);
+		}
+		
+	}
+	public void pickBike(User user, String bikeType) {
+		if (this.hasBikeType(bikeType)) {
+			int parkingSlot = this.WhereBikeType(bikeType);
+			Parking parking = listSlots.get(parkingSlot);
+			
+			Bicycle bike = parking.getCurrentBicycle();
+			if (!(bike == null)) {
+				bike.setUser(user);
+				parking.setCurrentBicycle(null);
+				user.setCurrentBicycle(bike);
+				parking.changeState("free");
+				user.setIsRentingBike(true);
+			}
+		}
+		
+		
 	}
 	
 	public ArrayList<Parking> getListSlots() {
@@ -94,6 +114,23 @@ public class StandardStation implements DockingStation{
 	            
 	        }
 	        return false;
+		}
+		public int WhereBikeType(String bikeType) {
+	        
+	        for (Parking place : listSlots) {
+	        	if (bikeType == "Electrical") {
+	        		if (place.getCurrentBicycle() instanceof ElectricalBicycle) {
+		                return listSlots.indexOf(place);
+		            }
+	        	}
+	        	if (bikeType == "Mechanical") {
+	        		if (place.getCurrentBicycle() instanceof MechanicalBicycle) {
+	        			return listSlots.indexOf(place);
+		            }
+	        	}
+	            
+	        }
+	        return 0;
 		}
 		
 		

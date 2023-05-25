@@ -74,9 +74,7 @@ public class User {
 		if (! (bike==null)) {
 			bike.setTime(minutes);
 			double price = bike.accept(registrationCard);
-			System.out.println(price);
-			System.out.println(this.currentBicycle);
-			System.out.println(this.registrationCard);
+
 			totalCharge += price; // pay for the price
 			
 			station.dropBike( this);
@@ -97,6 +95,18 @@ public class User {
 		}
 		else {
 			station.pickBike(parkingSlot, this);
+		}
+		
+		
+	}
+	public void rentingBike(DockingStation station, String bikeType) {
+		// Authentification à faire
+		
+		if (isRentingBike) {
+			System.out.println("Is already renting a bike");
+		}
+		else {
+			station.pickBike( this,bikeType);
 		}
 		
 		

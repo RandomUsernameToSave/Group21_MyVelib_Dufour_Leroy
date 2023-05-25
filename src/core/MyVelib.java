@@ -56,10 +56,9 @@ public class MyVelib {
 		
 		User Thomas = listUser.get(0);
 		// may be able to rent a bike from a given type in the station (without the slot)
-		Thomas.rentingBike(listStation.get(0), 0);
-		System.out.println(Thomas.getCurrentBicycle());
+		Thomas.rentingBike(listStation.get(0),"Mechanical");
 		
-		Thomas.returnBike(listStation.get(N-1), 201032);
+		Thomas.returnBike(listStation.get(N-1), 62);
 		System.out.println(Thomas.gettotalCharge());
 	}
 }

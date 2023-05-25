@@ -10,14 +10,14 @@ public class NoCard implements Cards {
 	@Override
 	public int visit(ElectricalBicycle bike) {
 		int minutes = bike.getTime();
-		return 2*minutes/60;
+		return 2*minutes/60+2;
 		
 	}
 
 	@Override
 	public int visit(MechanicalBicycle bike) {
 		int minutes = bike.getTime();
-		return minutes/60;
+		return minutes/60+1;
 	}
 
 

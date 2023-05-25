@@ -11,4 +11,5 @@ public interface DockingStation {
 	public void dropBike (int parkingSlot,User user);
 	public ArrayList<Parking> getListSlots() ;
 	public void dropBike (User user);
+	public void pickBike(User user, String bikeType);
 }
