@@ -113,7 +113,31 @@ public class User {
 	}
 	
 	
-	
+	/**
+	 * <h1>Rent the bike</h1>
+	 * Check if the user is already renting a bike, if not :
+	 * Remove the bike from the parking of the docking station and set it to the user.
+	 * 
+	 * @param station the docking station where the user is renting the bicycle
+	 * @param int parkingSlot the parking slot where the user is renting the bike
+	 * Example : 
+	 * 
+	 * User user = new User("Alice");
+	 * DockingStation station = new StandardStation(4, new GPS(0.,0.));
+	 * for (Parking park : station) {
+				if (Math.random()<=0.7) {
+					if (Math.random()<=0.3) {
+						park.setCurrentBicycle(bicycleFactory.getBicycle("Electrical") );
+					}
+					else {
+						park.setCurrentBicycle(bicycleFactory.getBicycle("Mechanical") );
+					}
+				}
+	 * user.rentingBike(station,0);
+	 * 
+	 * Here the user rented the bike at the parking number 0.
+	 * 
+	 * */
 	public void rentingBike(DockingStation station, int parkingSlot) {
 		// Authentification à faire
 		
@@ -126,6 +150,33 @@ public class User {
 		
 		
 	}
+	/**
+	 * <h1>Rent the bike</h1>
+	 * Check if the user is already renting a bike, if not :
+	 * Remove the bike from the parking of the docking station and set it to the user.
+	 * <h3>Beware !</h3> if the station doesn't have a bicycle of the type asked by the user, the method will do nothing.
+	 * 
+	 * @param station the docking station where the user is renting the bicycle
+	 * @param bikeType The bike type : currently it should be "Mechanical" or "Electrical"
+	 * 
+	 * Example : 
+	 * 
+	 * User user = new User("Alice");
+	 * DockingStation station = new StandardStation(4, new GPS(0.,0.));
+	 * for (Parking park : station) {
+				if (Math.random()<=0.7) {
+					if (Math.random()<=0.3) {
+						park.setCurrentBicycle(bicycleFactory.getBicycle("Electrical") );
+					}
+					else {
+						park.setCurrentBicycle(bicycleFactory.getBicycle("Mechanical") );
+					}
+				}
+	 * user.rentingBike(station, "Mechanical");
+	 * 
+	 * Here the user rented a "Mechanical" bike.
+	 * 
+	 * */
 	public void rentingBike(DockingStation station, String bikeType) {
 		// Authentification à faire
 		
