@@ -5,7 +5,7 @@ import java.util.UUID;
 /**
  * Vlibre Card implementation 
  * */
-public class Vlibre implements Cards,BikeVisitor {
+public class Vlibre implements Cards {
 
 	private User user;
 	private String cardType;

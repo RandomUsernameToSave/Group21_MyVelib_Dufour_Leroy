@@ -24,7 +24,9 @@ public class User {
 		this.name = name;
 		this.creditCard = creditCard;
 		this.registrationCard = registrationCard;
-		registrationCard.setUser(this);
+		if (!(registrationCard==null) ) {
+			registrationCard.setUser(this);
+		}
 		this.userID = java.util.UUID.randomUUID();
 	}
 	
@@ -61,18 +63,30 @@ public class User {
 		this.totalCharge = minutes;
 	}
 
-	public void returnBike(DockingStation station, int parkingSlot) {
+	public void returnBike(DockingStation station, int minutes) {
 		this.nbRides ++;
 		
 		
 		// calculate cost
-		double price = registrationCard.getPrice(currentBicycle.getTime());
-		totalCharge += price; // pay for the price
+		Bicycle bike = this.currentBicycle;
 		
-		station.dropBike(parkingSlot, this);
+
+		if (! (bike==null)) {
+			bike.setTime(minutes);
+			double price = bike.accept(registrationCard);
+			System.out.println(price);
+			System.out.println(this.currentBicycle);
+			System.out.println(this.registrationCard);
+			totalCharge += price; // pay for the price
+			
+			station.dropBike( this);
+		}
+
+		
 		
 		
 	}
+	
 	
 	
 	public void rentingBike(DockingStation station, int parkingSlot) {

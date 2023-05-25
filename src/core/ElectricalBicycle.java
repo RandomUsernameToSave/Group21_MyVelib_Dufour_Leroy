@@ -8,6 +8,13 @@ public class ElectricalBicycle implements Bicycle {
 	private int time_bike_minutes;
 	private User user_renting_currently;
 	
+	public void setUser(User user) {
+		this.user_renting_currently = user;
+	}
+	
+	public void setTime(int minutes) {
+		this.time_bike_minutes = minutes;
+	}
 	public int getTime() {
 		return time_bike_minutes;
 	}
@@ -16,7 +23,8 @@ public class ElectricalBicycle implements Bicycle {
 		return user_renting_currently;
 	}
 	
-	public int accept(BikeVisitor visitor) {
+	public int accept(Cards visitor) {
 		return visitor.visit(this);
 	}
+
 }

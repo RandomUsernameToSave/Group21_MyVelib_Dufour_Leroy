@@ -1,6 +1,6 @@
 package core;
 
-public class NoCard implements Cards,BikeVisitor {
+public class NoCard implements Cards {
 
 	
 	private User user;
@@ -20,11 +20,7 @@ public class NoCard implements Cards,BikeVisitor {
 		return minutes/60;
 	}
 
-	@Override
-	public int getPrice(int time) {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+
 
 	@Override
 	public String getCardType() {

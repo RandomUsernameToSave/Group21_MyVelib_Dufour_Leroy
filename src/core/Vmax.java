@@ -5,7 +5,7 @@ import java.util.UUID;
 /**
  * Vmax Card implementation 
  * */
-public class Vmax implements Cards,BikeVisitor {
+public class Vmax implements Cards {
 	private User user;
 	private String cardType = "Vmax";
 	

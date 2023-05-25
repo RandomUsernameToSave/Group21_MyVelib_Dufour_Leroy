@@ -11,6 +11,6 @@ public class CardsFactory {
 		if (cardsType=="Vmax") {
 			return new Vmax();
 		}
-		return null;
+		return new NoCard();
 	}
 }

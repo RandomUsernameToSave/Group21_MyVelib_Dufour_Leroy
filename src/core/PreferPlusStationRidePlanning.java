@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 
-public class AvoidPlusStationRidePlanning implements RidePlanningStrategy {
+public class PreferPlusStationRidePlanning implements RidePlanningStrategy {
 
 	public DockingStation[] RidePlanning(GPS startingGPS, GPS endGPS, ArrayList<DockingStation> listStation, String wantedBikeType) {
 		/**
@@ -12,8 +12,14 @@ public class AvoidPlusStationRidePlanning implements RidePlanningStrategy {
 		 * Create a comparator that compare the position to endGPS
 		 * Sort listStation accordingly */
 
-		
+		ArrayList<DockingStation> listPlusStation = new ArrayList<DockingStation>();
+		for (DockingStation station : listStation) {
+			if(station instanceof plusStation) {
+				listPlusStation.add(station);
+			}
+		}
 		DockingStation endStation = null;
+		DockingStation endPlusStation = null;
 		DockingStation startingStation = null;
 		
 		Comparator<DockingStation> endGPS_distance_comparator = new Comparator<DockingStation>() {
@@ -45,6 +51,7 @@ public class AvoidPlusStationRidePlanning implements RidePlanningStrategy {
 		
 		
 		Collections.sort(listStation,endGPS_distance_comparator);
+		Collections.sort(listPlusStation,endGPS_distance_comparator);
 		
 		// Return the first station that has free place
 		for (DockingStation station : listStation) {
@@ -53,6 +60,18 @@ public class AvoidPlusStationRidePlanning implements RidePlanningStrategy {
             	break;
             }
         }
+		
+		for (DockingStation station : listPlusStation) {
+            if (station.countFreePlaces()>0) {
+            	endPlusStation = station;
+            	break;
+            }
+        }
+		double distanceClosestStation = endStation.getGPS().getDistance(endGPS);
+        double distanceClosestPlusStation = endPlusStation.getGPS().getDistance(endGPS);
+		if (distanceClosestPlusStation<=1.1*distanceClosestStation) {
+			endStation = endPlusStation;
+		}
 		
 		Collections.sort(listStation,startGPS_distance_comparator);
 		

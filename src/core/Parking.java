@@ -37,6 +37,12 @@ public class Parking {
 	}
 	public void setCurrentBicycle(Bicycle bike) {
 		CurrentBicycle = bike;
+		if (bike == null) {
+			parkingState = "Free";
+		}
+		else {
+			parkingState = "Occupied";
+		}
 	}
 	
 }

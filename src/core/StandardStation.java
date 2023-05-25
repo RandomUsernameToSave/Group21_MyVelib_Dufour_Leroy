@@ -28,7 +28,7 @@ public class StandardStation implements DockingStation{
 		
 		// on recup le velo à la position du parking
 		Bicycle bike = parking.getCurrentBicycle();
-		
+		bike.setUser(user);
 		parking.setCurrentBicycle(null);
 		user.setCurrentBicycle(bike);
 		parking.changeState("free");
@@ -48,6 +48,20 @@ public class StandardStation implements DockingStation{
 		parking.setCurrentBicycle(bike);
 		user.setCurrentBicycle(null);
 		user.setIsRentingBike(false);
+		
+	}
+	public void dropBike (User user) {
+		
+		if (this.countFreePlaces()>0) {
+			Parking parking = this.getFreeParking();
+			Bicycle bike = user.getCurrentBicycle();
+			
+			parking.changeState("occupied");
+			parking.setCurrentBicycle(bike);
+			user.setCurrentBicycle(null);
+			user.setIsRentingBike(false);
+		}
+		
 		
 	}
 	
@@ -109,5 +123,13 @@ public class StandardStation implements DockingStation{
 	        }
 	        return OutOfOrder;
 	    }
+		public Parking getFreeParking() {
+			for (Parking park : listSlots) {
+				if(park.isFree()) {
+					return park;
+				}
+			}
+			return null;
+		}
 }
 

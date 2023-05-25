@@ -1,0 +1,194 @@
+@startuml
+class core.ElectricalBicycle {
+- UUID bicycleID
+- GPS bicycleGPS
+- int time_bike_minutes
+- User user_renting_currently
++ int getTime()
++ User getUser()
++ int accept(BikeVisitor)
+}
+interface core.DockingStation {
++ GPS getGPS()
++ int countFreePlaces()
++ boolean hasBikeType(String)
++ void pickBike(int,User)
++ void dropBike(int,User)
++ ArrayList<Parking> getListSlots()
+}
+interface core.Cards {
++ int getPrice(int)
++ String getCardType()
++ void setUser(User)
+}
+interface core.Bicycle {
++ int accept(BikeVisitor)
++ int getTime()
+}
+class core.OptimalRidePlanning {
++ DockingStation[] RidePlanning(GPS,GPS,ArrayList<DockingStation>,String)
+}
+class core.Manager {
+- HashMap<UUID,User> users
+- HashMap<UUID,StandardStation> stations
++ void addUser(User)
++ void addStation(StandardStation)
++ User getUserByID(int)
++ StandardStation getStationByID(int)
++ void displayUserReport(int)
++ void displayStationReport(int)
++ void displayOnlineStations()
++ void displayOfflineStations()
++ void displayUsers()
++ void displayReportSystem()
+}
+class core.StandardStation {
+- UUID stationID
+- boolean onService
+- GPS stationGPS
+- ArrayList<Parking> listSlots
+- int nbfree
+- int nboccupied
++ void pickBike(int,User)
++ ArrayList<Parking> getListSlots()
++ void dropBike(int,User)
++ GPS getGPS()
++ int countFreePlaces()
++ boolean hasBikeType(String)
++ UUID getstationID()
++ boolean isWorking()
++ int countOccupiedPlaces()
++ int countOutOfOrderPlaces()
+}
+interface core.Cost {
++ int getCost(int,User)
+}
+class core.Vlibre {
+- User user
+- String cardType
++ String getCardType()
++ int getPrice(int)
++ int visit(ElectricalBicycle)
++ int visit(MechanicalBicycle)
++ void setUser(User)
+}
+class core.MyVelib {
+}
+class core.CardsFactory {
++ Cards getCards(String)
+}
+class core.Vmax {
+- User user
+- String cardType
++ String getCardType()
++ int getPrice(int)
++ int visit(ElectricalBicycle)
++ int visit(MechanicalBicycle)
++ void setUser(User)
+}
+class core.GPS {
+- double x
+- double y
++ double getX()
++ double getY()
++ void setGPS(double,double)
++ double getDistance(GPS)
+}
+class core.BicycleFactory {
++ Bicycle getBicycle(String)
+}
+interface core.BikeVisitor {
++ int visit(ElectricalBicycle)
++ int visit(MechanicalBicycle)
+}
+class core.AvoidPlusStationRidePlanning {
++ DockingStation[] RidePlanning(GPS,GPS,ArrayList<DockingStation>,String)
+}
+interface core.RidePlanningStrategy {
++ DockingStation[] RidePlanning(GPS,GPS,ArrayList<DockingStation>,String)
+}
+class core.User {
+- String name
+- UUID userID
+- GPS userGPS
+- UUID creditCard
+- Cards registrationCard
+- int timecreditBalance
+- int totalCharge
+- int nbRides
+- boolean isRentingBike
+- Bicycle currentBicycle
++ Bicycle getCurrentBicycle()
++ void setCurrentBicycle(Bicycle)
++ void setIsRentingBike(boolean)
++ Cards getRegistrationCard()
++ int getTimecreditBalance()
++ int gettotalCharge()
++ int getnbRides()
++ UUID getuserID()
++ void setTimecreditBalance(int)
++ void setTotalCharge(int)
++ void returnBike(DockingStation,int)
++ void rentingBike(DockingStation,int)
+}
+class core.PreferPlusStationRidePlanning {
++ DockingStation[] RidePlanning(GPS,GPS,ArrayList<DockingStation>,String)
+}
+class core.NoCard {
+- User user
+- String cardType
++ int visit(ElectricalBicycle)
++ int visit(MechanicalBicycle)
++ int getPrice(int)
++ String getCardType()
++ void setUser(User)
+}
+class core.MechanicalBicycle {
+- UUID bicycleID
+- GPS bicycleGPS
+- int time_bike_minutes
+- User user_renting_currently
++ int getTime()
++ User getUser()
++ int accept(BikeVisitor)
+}
+class core.Parking {
+- UUID parkingID
+- String parkingState
+- Bicycle CurrentBicycle
++ void changeState(String)
++ String getParkingState()
++ boolean isFree()
++ boolean isOccupied()
++ boolean isOutOfOrder()
++ Bicycle getCurrentBicycle()
++ void setCurrentBicycle(Bicycle)
+}
+class core.plusStation {
+- UUID stationID
+- boolean onService
+- GPS stationGPS
+- ArrayList<Parking> listSlots
++ GPS getGPS()
++ int countFreePlaces()
++ boolean hasBikeType(String)
++ void pickBike(int,User)
++ void dropBike(int,User)
++ ArrayList<Parking> getListSlots()
+}
+
+
+core.Bicycle <|.. core.ElectricalBicycle
+core.RidePlanningStrategy <|.. core.OptimalRidePlanning
+core.DockingStation <|.. core.StandardStation
+core.Cards <|.. core.Vlibre
+core.BikeVisitor <|.. core.Vlibre
+core.Cards <|.. core.Vmax
+core.BikeVisitor <|.. core.Vmax
+core.RidePlanningStrategy <|.. core.AvoidPlusStationRidePlanning
+core.RidePlanningStrategy <|.. core.PreferPlusStationRidePlanning
+core.Cards <|.. core.NoCard
+core.BikeVisitor <|.. core.NoCard
+core.Bicycle <|.. core.MechanicalBicycle
+core.DockingStation <|.. core.plusStation
+@enduml
