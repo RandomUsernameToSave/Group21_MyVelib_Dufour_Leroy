@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.UUID;
 
 import org.junit.jupiter.api.Test;
-
+import core.NoCard;
 import core.Bicycle;
 import core.BicycleFactory;
 import core.Cards;
@@ -41,10 +41,10 @@ class TestCardsFactory {
 		}
 	}
 	@Test
-	void ifCardsRequiredIsNotVmaxNorVlibreReturnNull() {
+	void ifCardsRequiredIsNotVmaxNorVlibreReturnNoCard() {
 		CardsFactory Factory = new CardsFactory();
 		Cards card = Factory.getCards("dfdjidfhs");
-		if (card ==null) {
+		if (card instanceof NoCard) {
 			assert(true);
 		}
 		else {
