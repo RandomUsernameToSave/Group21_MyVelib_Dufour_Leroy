@@ -19,14 +19,25 @@ public class Vlibre implements Cards {
 		return cardType;
 	}
 	
-	public int getPrice(int time) {
-		return 0;
-	}
+
 
 	/**
-	 * Vlibre Visitor Pattern
-	 * If less than 60 minutes, we just remove this time from the user balance
-	 * Else the user pay for the hour*/
+	 * <h1>Visit an electrical bike to calculate cost</h1>
+	 * Return the price that should be charged to the user
+	 * Automatically handle setting of time credit balance
+	 * 
+	 * 
+	 * <h3>Beware !</h3> if the time of the bike is not correctly set, the visit won't retunr the good result.
+	 * @param bike The bike visited according to visitor pattern
+	 * 
+	 * Example : 
+	 * CardsFactory factory = new CardsFactory();
+	 * Cards card = factory.getCards("Vlibre");
+	 * User user = new User("Alice",UUID.randomUUID(),card);
+	 * ElectricalBicycle bike = new ElectricalBicycle();
+	 * bike.setTime(20);
+	 * user.getCards().visit(bike);
+	 * */
 	@Override
 	public int visit(ElectricalBicycle bike) {
 		int minutes = bike.getTime();
@@ -45,7 +56,7 @@ public class Vlibre implements Cards {
 			}
 		}
 		else {
-			int q = 2*minutes/60; // 2e /heure
+			int q = 2*minutes/60; // 2€ /heure
 			int timecredit = user.getTimecreditBalance();
 			
 			if (timecredit > minutes%60) {
@@ -61,6 +72,24 @@ public class Vlibre implements Cards {
 		}
 	}
 
+	/**
+	 * <h1>Visit a mechanical bike to calculate cost</h1>
+	 * Return the price that should be charged to the user
+	 * Automatically handle setting of time credit balance
+	 * 
+	 * 
+	 * <h3>Beware !</h3> if the time of the bike is not correctly set, the visit won't retunr the good result.
+	 * @param bike The bike visited according to visitor pattern
+	 * 
+	 * Example : 
+	 * 
+	 * CardsFactory factory = new CardsFactory();
+	 * Cards card = factory.getCards("Vlibre");
+	 * User user = new User("Alice",UUID.randomUUID(),card);
+	 * MechanicalBicycle bike = new MechanicalBicycle();
+	 * bike.setTime(20);
+	 * user.getCards().visit(bike);
+	 * */
 	@Override
 	public int visit(MechanicalBicycle bike) {
 		int minutes = bike.getTime();
