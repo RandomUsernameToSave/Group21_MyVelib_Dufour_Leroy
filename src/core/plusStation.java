@@ -21,6 +21,9 @@ public class plusStation implements DockingStation {
 		
 		
 	}
+	public void setOnService(boolean b) {
+		onService = b;
+	}
 	public UUID getstationID() {
 		return this.stationID;
 	}

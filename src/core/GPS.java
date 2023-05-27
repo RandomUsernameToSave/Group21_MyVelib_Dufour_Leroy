@@ -1,5 +1,7 @@
 package core;
 
+import java.util.UUID;
+
 public class GPS {
 
 	private double x;
@@ -50,5 +52,12 @@ public class GPS {
 			return Math.sqrt(distance);
 		}
 
+	public static GPS fromString(String GPSstring) {
+		// should be of the form (lat,long) NO SPACE IN BETWEEN
+		GPSstring=GPSstring.substring( 1, GPSstring.length() - 1 );
+		String[] latLong= GPSstring.split(",");
+		double[] latLongDouble = {Double.parseDouble(latLong[0]),Double.parseDouble(latLong[1])};
+		return new GPS(latLongDouble[0],latLongDouble[1]);
+	}
 	
 }

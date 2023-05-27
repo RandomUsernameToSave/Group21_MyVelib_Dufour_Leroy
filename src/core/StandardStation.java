@@ -22,6 +22,9 @@ public class StandardStation implements DockingStation{
 		for (int i=0; i<nbreParking; ++i){
 			this.listSlots.add( new Parking() ); }
 		}
+	public void setOnService(boolean b) {
+		onService = b;
+	}
 	/**
 	 * <h1>Pick a bike from a station</h1>
 	 * Remove the bike from the parking of the parkingSlot of the docking station and set it to the user.

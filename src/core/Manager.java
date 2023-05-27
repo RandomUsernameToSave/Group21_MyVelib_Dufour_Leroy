@@ -2,12 +2,18 @@ package core;
 
 import java.util.HashMap;
 import java.util.UUID;
-//là j'ai importé ça jsp ce que ça fait
+
 public class Manager {
+	private String name;
 	private HashMap<UUID, User> users;
 	private HashMap<UUID, DockingStation> stations;
 	
-
+	public Manager(String name) {
+        users = new HashMap<>();
+        stations = new HashMap<>();
+        this.name=name;
+        
+    }
     public Manager() {
         users = new HashMap<>();
         stations = new HashMap<>();

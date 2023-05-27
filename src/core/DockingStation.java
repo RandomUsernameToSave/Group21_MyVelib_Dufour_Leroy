@@ -17,4 +17,5 @@ public interface DockingStation {
 	public boolean isWorking();
 	public int countOccupiedPlaces();
 	public int countOutOfOrderPlaces();
+	public void setOnService(boolean b);
 }

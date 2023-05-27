@@ -26,5 +26,11 @@ public class ElectricalBicycle implements Bicycle {
 	public int accept(Cards visitor) {
 		return visitor.visit(this);
 	}
+	public GPS getGPS() {
+		return bicycleGPS;
+	}
+	public GPS setGPS() {
+		return bicycleGPS;
+	}
 
 }
