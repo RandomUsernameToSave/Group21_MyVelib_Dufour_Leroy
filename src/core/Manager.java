@@ -5,7 +5,7 @@ import java.util.UUID;
 //là j'ai importé ça jsp ce que ça fait
 public class Manager {
 	private HashMap<UUID, User> users;
-	private HashMap<UUID, StandardStation> stations;
+	private HashMap<UUID, DockingStation> stations;
 	
 
     public Manager() {
@@ -18,14 +18,14 @@ public class Manager {
     public void addUser(User user) {
         users.put(user.getuserID(), user);
     }
-    public void addStation(StandardStation station) {
+    public void addStation(DockingStation station) {
         stations.put(station.getstationID(), station);
     }
 
     public User getUserByID(UUID id) {//peut etre que id c'est un string ici parceque uuid?
         return users.get(id);
     }
-    public StandardStation getStationByID(UUID id) {
+    public DockingStation getStationByID(UUID id) {
         return stations.get(id);
     }
 
@@ -41,7 +41,7 @@ public class Manager {
         }
     }
     public void displayStationReport(UUID id) {
-        StandardStation station = getStationByID(id);
+        DockingStation station = getStationByID(id);
         if (station != null) {
             System.out.println("Station ID: " + station.getstationID());
             System.out.println("Is the station working? " + station.isWorking());
@@ -49,12 +49,12 @@ public class Manager {
             System.out.println("Number of occupied places: " + station.countOccupiedPlaces());
             System.out.println("Number of places out of order: " + station.countOutOfOrderPlaces());
         } else {
-            System.out.println("User with ID " + id + " does not exist.");
+            System.out.println("Station with ID " + id + " does not exist.");
         }
     }
     public void displayOnlineStations() {
         System.out.println("Online Stations:");
-        for (StandardStation station : stations.values()) {
+        for (DockingStation station : stations.values()) {
             if (station.isWorking()) {
             System.out.println("Station ID: " + station.getstationID()+ "is working!");
             }
@@ -63,7 +63,7 @@ public class Manager {
 
     public void displayOfflineStations() {
         System.out.println("Offline Stations:");
-        for (StandardStation station : stations.values()) {
+        for (DockingStation station : stations.values()) {
             if (!station.isWorking()) {
             	System.out.println("Station ID: " + station.getstationID());
             }

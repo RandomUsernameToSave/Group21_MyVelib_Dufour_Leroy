@@ -27,9 +27,28 @@ public class GPS {
 		this.y=y;
 	}
 	
+
+
 	public double getDistance(GPS gps) {
-		double q= Math.pow(gps.getX()-this.x,2)+Math.pow(gps.getY()-this.y,2);
-		return Math.sqrt(q);
-	}
+
+			double lat1= this.x;
+			double lat2 = gps.getX();
+			double long1 = this.y;
+			double long2 = gps.getY();
+			final int R = 6371; // Radius of the earth
+
+			double latDistance = Math.toRadians(lat2 - lat1);
+			double lonDistance = Math.toRadians(long2 - long1);
+			double a = Math.sin(latDistance / 2) * Math.sin(latDistance / 2)
+					+ Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2))
+					* Math.sin(lonDistance / 2) * Math.sin(lonDistance / 2);
+			double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+			double distance = R * c * 1000; // convert to meters
+
+			distance = Math.pow(distance, 2);
+
+			return Math.sqrt(distance);
+		}
+
 	
 }

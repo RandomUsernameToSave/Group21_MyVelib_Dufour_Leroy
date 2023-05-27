@@ -21,6 +21,9 @@ public class plusStation implements DockingStation {
 		
 		
 	}
+	public UUID getstationID() {
+		return this.stationID;
+	}
 	public GPS getGPS() {
 		return this.stationGPS;
 	}
@@ -254,5 +257,26 @@ public class plusStation implements DockingStation {
 		}
 		return null;
 	}
-	
+	@Override
+	public boolean isWorking() {
+		return onService;
+	}
+	public int countOccupiedPlaces() {
+        int occupiedCount = 0;
+        for (Parking place : listSlots) {
+            if (place.isOccupied()) {
+                occupiedCount++;
+            }
+        }
+        return occupiedCount;
+    }
+	public int countOutOfOrderPlaces() {
+        int OutOfOrder = 0;
+        for (Parking place : listSlots) {
+            if (!place.isOccupied()) {
+            	OutOfOrder++;
+            }
+        }
+        return OutOfOrder;
+    }
 }

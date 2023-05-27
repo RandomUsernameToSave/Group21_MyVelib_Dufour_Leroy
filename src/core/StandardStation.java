@@ -69,8 +69,8 @@ public class StandardStation implements DockingStation{
 	 * Remove the bike from the parking of the type asked by the user of the docking station and set it to the user.
 	 * <h3>Beware !</h3> If there is no bike of the bikeType in the station, the function will do nothing.
 	 * 
-	 * @param parkingSlot The number of the parking slot in the station.
-	 * @param bikeType The type of the bike asked by the user. Currently should be "Electrical" or "Mechanical".
+	 * @param bikeType The number of the parking slot in the station.
+	 * @param user
 	 * Example : 
 	 * 
 	 * User user = new User("Alice");
