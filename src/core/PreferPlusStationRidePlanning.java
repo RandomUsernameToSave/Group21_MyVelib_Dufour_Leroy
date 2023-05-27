@@ -6,6 +6,41 @@ import java.util.Comparator;
 
 public class PreferPlusStationRidePlanning implements RidePlanningStrategy {
 
+	/**
+	 * Return the closest docking station with the bike type asked by the user from the starting point, and the closest station with an 
+	 * empty slot from the end point. If the closest plus station is only 10% more far than the closest station, return the closest plus station.
+	 * Uses comparator to sort list accordingly.
+	 * 
+	 * @param startingGPS the GPS position from where the user is starting.
+	 * @param endGPS The GPS position where the user want to go.
+	 * @param listStation The list of all station of the system.
+	 * @param wantedBikeType The type of the bike wanted by the user : should be "Electrical" or "Mechanical".
+	 * 
+	 * 
+	 * Example : 
+	 * <pre>{@code
+	 * 	DockingStation station = new StandardStation(4, new GPS(1.,0.));
+		DockingStation station1 = new StandardStation(4, new GPS(2.,0.));
+		BicycleFactory Factory = new BicycleFactory();
+		Bicycle bike1 = Factory.getBicycle("Mechanical");
+		Bicycle bike2 = Factory.getBicycle("Mechanical");
+		
+		station.getListSlots().get(0).setCurrentBicycle(bike2);;
+		station1.getListSlots().get(0).setCurrentBicycle(bike1);;
+		
+		
+		
+		ArrayList<DockingStation> listStation = new ArrayList<DockingStation>();
+		listStation.add(station1);
+
+		listStation.add(station);
+		GPS startGPS = new GPS(0.,0.);
+		GPS endGPS = new GPS(10.,0.);
+		DockingStation[] solution = new PreferPlusStationRidePlanning().RidePlanning(startGPS, endGPS, listStation, "Mechanical");
+		
+	 * }</pre>
+	 * 
+	 * */
 	public DockingStation[] RidePlanning(GPS startingGPS, GPS endGPS, ArrayList<DockingStation> listStation, String wantedBikeType) {
 		/**
 		 * Return the closest DockingStation from the GPS point 
