@@ -7,6 +7,24 @@ import java.util.HashMap;
 import java.util.Set;
 import java.util.UUID;
 
+	/**
+	 * 
+	 * 
+	 *	<h1> Manager Class </h1>
+	 * Sets up a Manager, which allows the supervision of the MyVelib system
+	 *The Manager class has access to the system database represented by the HashMap users and stations. 
+	 *To set up the data of MyVelib system, one should
+	 *	use the addUser fonction with a user object as argument
+	 *	use the addStation fonction with a StandardStation object as argument
+	 *
+	 *The HashMaps permit the use of getUserByID and getStationByID:
+	 *The function getUserByID has UUID id as input and returns the associated user object
+	 *(à finir)
+	 *
+	 *Apparte, supervision is an essential step in this kind of project, and I'm currently working with a similar company (Bikeep) and this aspect is their strong point.
+	 * */
+
+
 public class Manager {
 	private String name;
 	private HashMap<UUID, User> users;
