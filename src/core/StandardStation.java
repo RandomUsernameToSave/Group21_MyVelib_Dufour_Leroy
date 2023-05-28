@@ -36,6 +36,16 @@ public class StandardStation implements DockingStation{
 		for (int i=0; i<nbreParking; ++i){
 			this.listSlots.add( new Parking() ); }
 		}
+	public StandardStation(int nbreParking, GPS stationGPS,String ID) {
+		this.stationID = UUID.nameUUIDFromBytes(ID.getBytes());
+		this.onService = true;
+		this.nbfree = nbreParking;
+		this.nboccupied = 0;
+		this.stationGPS = stationGPS;
+		
+		for (int i=0; i<nbreParking; ++i){
+			this.listSlots.add( new Parking() ); }
+		}
 	public void setOnService(boolean b) {
 		onService = b;
 	}
@@ -390,6 +400,11 @@ public class StandardStation implements DockingStation{
 				}
 			}
 			return null;
+		}
+		
+		@Override
+		public String toString() {
+			return stationID.toString();
 		}
 }
 

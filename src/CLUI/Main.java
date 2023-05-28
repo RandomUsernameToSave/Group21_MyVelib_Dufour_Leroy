@@ -1,14 +1,11 @@
-package core;
+package CLUI;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 import java.util.UUID;
 
 public class Main {
-	private Manager defaultNetwork = new Manager();;
-	private ArrayList<Bicycle> bicycleList;
-	private HashMap<String, Manager> networks;
-	
+
 	
 	
 	
@@ -18,7 +15,7 @@ public class Main {
 
         CLIparseCommand CLIparse = new CLIparseCommand();
         while (running) {
-            System.out.println("Welcome to MyVelib!");
+            System.out.println("Welcome to MyVelib! \n");
 
             String command = scanner.nextLine();
 

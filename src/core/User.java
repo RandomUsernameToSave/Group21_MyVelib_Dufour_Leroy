@@ -27,7 +27,7 @@ public class User {
 		if (!(registrationCard==null) ) {
 			registrationCard.setUser(this);
 		}
-		this.userID = java.util.UUID.randomUUID();
+		this.userID = UUID.nameUUIDFromBytes(name.getBytes());
 	}
 	
 	public Bicycle getCurrentBicycle() {

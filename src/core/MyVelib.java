@@ -7,6 +7,12 @@ import java.util.concurrent.ThreadLocalRandom;
 public class MyVelib {
 
 	public static void main(String[] args) {
+		for (int i=0;i<3;i++) {
+			System.out.println((new StandardStation(1, new GPS(4*Math.random(),4*Math.random()),String.valueOf(i) ).getstationID()));
+		}
+
+	}
+	public void mai(String[] args) {
 		BicycleFactory bicycleFactory = new BicycleFactory();
 		CardsFactory cardsFactory = new CardsFactory();
 		ArrayList<DockingStation> listStation = new ArrayList<DockingStation>();

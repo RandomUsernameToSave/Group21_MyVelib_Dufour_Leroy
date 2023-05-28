@@ -30,6 +30,9 @@ public class Manager {
 	private HashMap<UUID, User> users;
 	private HashMap<UUID, DockingStation> stations;
 	
+	public void setName(String name) {
+		this.name=name;
+	}
 	public Manager(String name) {
         users = new HashMap<>();
         stations = new HashMap<>();
@@ -43,7 +46,7 @@ public class Manager {
     }
     
     public void sortStation(String sortpolicy) {
-    	Set<UUID> keySet = stations.keySet();
+    	
     	Collection<DockingStation> values = stations.values();
     	
     	ArrayList<DockingStation> stationList= new ArrayList<DockingStation>(values);
