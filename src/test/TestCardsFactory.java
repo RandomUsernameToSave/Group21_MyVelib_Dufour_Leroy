@@ -1,55 +1,48 @@
-package test;
-
-import static org.junit.jupiter.api.Assertions.*;
-
-import java.util.UUID;
-
-import org.junit.jupiter.api.Test;
-import core.NoCard;
-import core.Bicycle;
-import core.BicycleFactory;
-import core.Cards;
-import core.ElectricalBicycle;
-import core.MechanicalBicycle;
-import core.Vlibre;
-import core.Vmax;
-import core.CardsFactory;
-
-class TestCardsFactory {
-
 	@Test
-	void ifCardsRequiredIsVlibreReturnVlibre() {
+	public void testPriceVlibreElectricalBicycleFirstHour() {
 		CardsFactory Factory = new CardsFactory();
 		Cards card = Factory.getCards("Vlibre");
-		if (card instanceof Vlibre) {
-			assert(true);
-		}
-		else {
-			assert(false);
-		}
-	}
-	
-	@Test
-	void ifCardsRequiredIsVmaxReturnVmax() {
-		CardsFactory Factory = new CardsFactory();
-		Cards card = Factory.getCards("Vmax");
-		if (card instanceof Vmax) {
-			assert(true);
-		}
-		else {
-			assert(false);
-		}
+	    ElectricalBicycle bike = new ElectricalBicycle();
+	    bike.setTime(20);
+	    
+	    int result = card.visit(bike);
+	    
+	    // Assert the price charged to the user
+	    assertEquals(1, result);
 	}
 	@Test
-	void ifCardsRequiredIsNotVmaxNorVlibreReturnNoCard() {
+	public void testPriceVlibreElectricalBicycleAfterFirstHour() {
 		CardsFactory Factory = new CardsFactory();
-		Cards card = Factory.getCards("dfdjidfhs");
-		if (card instanceof NoCard) {
-			assert(true);
-		}
-		else {
-			assert(false);
-		}
+		Cards card = Factory.getCards("Vlibre");
+	    ElectricalBicycle bike = new ElectricalBicycle();
+	    bike.setTime(140);
+	    
+	    int result = card.visit(bike);
+	    
+	    // Assert the price charged to the user
+	    assertEquals(5, result);
 	}
-
-}
+	@Test
+	public void testPriceVlibreMechanicalBicycleFirstHour() {
+		CardsFactory Factory = new CardsFactory();
+		Cards card = Factory.getCards("Vlibre");
+	    ElectricalBicycle bike = new ElectricalBicycle();
+	    bike.setTime(20);
+	    
+	    int result = card.visit(bike);
+	    
+	    // Assert the price charged to the user
+	    assertEquals(0, result);
+	}
+	@Test
+	public void testPriceVlibreMechanicalBicycleAfterFirstHour() {
+		CardsFactory Factory = new CardsFactory();
+		Cards card = Factory.getCards("Vlibre");
+	    ElectricalBicycle bike = new ElectricalBicycle();
+	    bike.setTime(140);
+	    
+	    int result = card.visit(bike);
+	    
+	    // Assert the price charged to the user
+	    assertEquals(2, result);
+	}
