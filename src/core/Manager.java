@@ -51,14 +51,15 @@ public class Manager {
     	
     	ArrayList<DockingStation> stationList= new ArrayList<DockingStation>(values);
     	
-    	if(sortpolicy=="LeastUsed") {
+    	if(sortpolicy.equalsIgnoreCase("LeastUsed")) {
     		LeastUsedStationComparator comparator = new LeastUsedStationComparator();
     		Collections.sort(stationList,comparator);
     	}
-    	else if(sortpolicy=="MostUsed") {
+    	else if(sortpolicy.equalsIgnoreCase("MostUsed")) {
     		MostUsedStationComparator comparator = new MostUsedStationComparator();
     		Collections.sort(stationList,comparator);
     	}
+    	System.out.println("Sort least used stations");
     	System.out.println(stationList); // toString for station
     }
     public void addUser(User user) {

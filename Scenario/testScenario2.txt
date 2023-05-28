@@ -1,3 +1,5 @@
 rentBike a77a2b61-5b8b-33e4-837b-88b07e54bc72 c4ca4238-a0b9-3382-8dcc-509a6f75849b
-returnBike a77a2b61-5b8b-33e4-837b-88b07e54bc72 c4ca4238-a0b9-3382-8dcc-509a6f75849b 130
-displayUser velib a77a2b61-5b8b-33e4-837b-88b07e54bc72
+returnBike a77a2b61-5b8b-33e4-837b-88b07e54bc72 cfcd2084-95d5-35ef-a6e7-dff9f98764da 130
+rentBike a77a2b61-5b8b-33e4-837b-88b07e54bc72 c81e728d-9d4c-3f63-af06-7f89cc14862c
+returnBike a77a2b61-5b8b-33e4-837b-88b07e54bc72 cfcd2084-95d5-35ef-a6e7-dff9f98764da 130
+sortStation velib LeastUsed

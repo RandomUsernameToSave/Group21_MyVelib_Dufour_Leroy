@@ -20,6 +20,9 @@ public class User {
 	private boolean isRentingBike = false;
 	private Bicycle currentBicycle = null;
 	
+	public String getName() {
+		return name;
+	}
 	public User(String name, UUID creditCard,Cards registrationCard) {
 		this.name = name;
 		this.creditCard = creditCard;
@@ -178,7 +181,7 @@ public class User {
 	 * 
 	 * */
 	public void rentingBike(DockingStation station, String bikeType) {
-		// Authentification à faire
+	
 		
 		if (isRentingBike) {
 			System.out.println("Is already renting a bike");

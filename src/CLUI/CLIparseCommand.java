@@ -112,6 +112,7 @@ public class CLIparseCommand {
 			
 		}
 		networks.put(velibnetworkname,defaultNetwork);
+		System.out.println("Setup successful ! ");
 	}
 	
 	public void setup(String velibnetworkname,int nstations,int nslots, double GPSdiameter,int nbikes) {
@@ -150,28 +151,33 @@ public class CLIparseCommand {
 		User user = new User(userName, UUID.randomUUID(), card);
 		Manager manager = networks.get(velibnetworkName);
 		manager.addUser(user);
-		
+		System.out.println("User "+userName+" successfully added to the velib system ! ");
 	}
 
 	public void offline(String velibnetworkName, UUID stationID) {
 		Manager network = networks.get(velibnetworkName);
 		DockingStation station = network.getStationByID(stationID);
 		station.setOnService(false);
+		System.out.println("Station "+stationID+" set to offline");
 	}
 	public void online(String velibnetworkName, UUID stationID ) {
 		Manager network = networks.get(velibnetworkName);
 		DockingStation station = network.getStationByID(stationID);
 		station.setOnService(true);
+		System.out.println("Station "+stationID+" set to online !");
 	}
 	public void rentBike(UUID userID,UUID stationID) {
 		User user = defaultNetwork.getUserByID(userID);
 		DockingStation station = defaultNetwork.getStationByID(stationID);
 		if (station.hasBikeType("Mechanical")) {
 			user.rentingBike(station, "Mechanical");
+			System.out.println("User "+user.getName()+" picked a mechanical bike at "+stationID);
 		}
 		else if (station.hasBikeType("Electrical")) {
 			user.rentingBike(station, "Electrical");
+			System.out.println("User "+user.getName()+" picked an electrical bike at "+stationID);
 		}
+		
 		
 	}
 	
@@ -189,6 +195,8 @@ public class CLIparseCommand {
 		User user = defaultNetwork.getUserByID(userID);
 		DockingStation station = defaultNetwork.getStationByID(stationId);
 		user.returnBike(station, duration);
+
+		System.out.println(user.getName()+" returned his bike at "+stationId);
 	}
 	public void returnBike(UUID userID,GPS GPSlocation,int duration) {
 		User user = defaultNetwork.getUserByID(userID);

@@ -87,6 +87,7 @@ public class StandardStation implements DockingStation{
 			user.setCurrentBicycle(bike);
 			parking.changeState("free");
 			user.setIsRentingBike(true);
+			totalNumberRenting +=1;
 		}
 		
 	}
@@ -129,6 +130,7 @@ public class StandardStation implements DockingStation{
 				user.setCurrentBicycle(bike);
 				parking.changeState("free");
 				user.setIsRentingBike(true);
+				totalNumberRenting +=1;
 			}
 		}
 		
@@ -176,6 +178,7 @@ public class StandardStation implements DockingStation{
 			parking.setCurrentBicycle(bike);
 			user.setCurrentBicycle(null);
 			user.setIsRentingBike(false);
+			this.totalNumberDropping +=1;
 		}
 		
 		
@@ -218,6 +221,7 @@ public class StandardStation implements DockingStation{
 			parking.setCurrentBicycle(bike);
 			user.setCurrentBicycle(null);
 			user.setIsRentingBike(false);
+			this.totalNumberDropping +=1;
 		}
 		
 		
@@ -404,7 +408,7 @@ public class StandardStation implements DockingStation{
 		
 		@Override
 		public String toString() {
-			return stationID.toString();
+			return stationID.toString()+" , " +totalNumberRenting+" , " +(totalNumberDropping-totalNumberRenting) ;
 		}
 }
 

@@ -15,7 +15,7 @@ public class Main {
 
         CLIparseCommand CLIparse = new CLIparseCommand();
         while (running) {
-            System.out.println("Welcome to MyVelib! \n");
+            System.out.println("Welcome to MyVelib! \nWhat is your request ?");
 
             String command = scanner.nextLine();
 
