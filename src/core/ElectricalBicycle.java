@@ -33,4 +33,7 @@ public class ElectricalBicycle implements Bicycle {
 		return bicycleGPS;
 	}
 
+	public void setGPS(GPS bGPS) {
+		bicycleGPS=bGPS;
+	}
 }

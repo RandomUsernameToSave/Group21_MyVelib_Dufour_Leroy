@@ -27,8 +27,8 @@ public class MechanicalBicycle implements Bicycle{
 	public GPS getGPS() {
 		return bicycleGPS;
 	}
-	public GPS setGPS() {
-		return bicycleGPS;
+	public void setGPS(GPS bGPS) {
+		bicycleGPS=bGPS;
 	}
 
 }

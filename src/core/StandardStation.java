@@ -9,8 +9,22 @@ public class StandardStation implements DockingStation{
 	private GPS stationGPS;
 	private ArrayList<Parking> listSlots = new ArrayList<Parking>();
 	private int nbfree;
-	private int nboccupied; //est ce que ya des static et tt ici?
-	//il veulent aussi que je caractérise son occupation dans la question 4 bizarre
+	private int nboccupied; 
+	private int totalNumberRenting=0;
+	private int totalNumberDropping=0;
+	
+	public int getTotalNumberDropping() {
+		return totalNumberDropping;
+	}
+	public void setTotalNumberDropping(int totalNumber) {
+		totalNumberDropping=totalNumber;
+	}
+	public int getTotalNumberRenting() {
+		return totalNumberRenting;
+	}
+	public void setTotalNumberRenting(int totalNumber) {
+		totalNumberRenting=totalNumber;
+	}
 	
 	public StandardStation(int nbreParking, GPS stationGPS) {
 		this.stationID = java.util.UUID.randomUUID();

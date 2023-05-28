@@ -7,5 +7,5 @@ public interface Bicycle {
 	public void setTime(int minutes);
 	public void setUser(User user);
 	public GPS getGPS();
-	public GPS setGPS();
+	public void setGPS(GPS bgps);
 }

@@ -157,7 +157,8 @@ public class CLIparseCommand {
 		user.returnBike(station, duration);
 	}
 	public void returnBike(UUID userID,GPS GPSlocation,int duration) {
-		// a faire
+		User user = defaultNetwork.getUserByID(userID);
+		user.returnBike(GPSlocation, duration);
 	}
 	public void displayStation(String velibnetworkName, UUID stationID) {
 		Manager network = networks.get(velibnetworkName);

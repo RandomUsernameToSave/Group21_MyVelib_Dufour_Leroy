@@ -1,6 +1,10 @@
 package core;
 
+import java.util.Collection;
+import java.util.Collections;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 import java.util.UUID;
 
 public class Manager {
@@ -19,8 +23,23 @@ public class Manager {
         stations = new HashMap<>();
         
     }
-    //là on pourrait rajouter des fonctions qui ajoutes des élements si la liste est vide
-
+    
+    public void sortStation(String sortpolicy) {
+    	Set<UUID> keySet = stations.keySet();
+    	Collection<DockingStation> values = stations.values();
+    	
+    	ArrayList<DockingStation> stationList= new ArrayList<DockingStation>(values);
+    	
+    	if(sortpolicy=="LeastUsed") {
+    		LeastUsedStationComparator comparator = new LeastUsedStationComparator();
+    		Collections.sort(stationList,comparator);
+    	}
+    	else if(sortpolicy=="MostUsed") {
+    		MostUsedStationComparator comparator = new MostUsedStationComparator();
+    		Collections.sort(stationList,comparator);
+    	}
+    	System.out.println(stationList); // toString for station
+    }
     public void addUser(User user) {
         users.put(user.getuserID(), user);
     }

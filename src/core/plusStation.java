@@ -10,7 +10,15 @@ public class plusStation implements DockingStation {
 	private boolean onService;
 	private GPS stationGPS;
 	private ArrayList<Parking> listSlots = new ArrayList<Parking>();
+	private int totalNumberRenting=0;
+	private int totalNumberDropping=0;
 	
+	public int getTotalNumberDropping() {
+		return totalNumberDropping;
+	}
+	public void setTotalNumberDropping(int totalNumber) {
+		totalNumberDropping=totalNumber;
+	}
 	public plusStation(int nbreParking, GPS stationGPS) {
 		this.stationID = java.util.UUID.randomUUID();
 		this.onService = true;
@@ -21,6 +29,13 @@ public class plusStation implements DockingStation {
 		
 		
 	}
+	public int getTotalNumberRenting() {
+		return totalNumberRenting;
+	}
+	public void setTotalNumberRenting(int totalNumber) {
+		totalNumberRenting=totalNumber;
+	}
+	
 	public void setOnService(boolean b) {
 		onService = b;
 	}

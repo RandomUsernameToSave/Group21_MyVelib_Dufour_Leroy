@@ -1,6 +1,7 @@
 package core;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.UUID;
 
 public interface DockingStation {
@@ -18,4 +19,9 @@ public interface DockingStation {
 	public int countOccupiedPlaces();
 	public int countOutOfOrderPlaces();
 	public void setOnService(boolean b);
+	public int getTotalNumberRenting();
+	public void setTotalNumberRenting(int totalNumber);
+	public int getTotalNumberDropping();
+	public void setTotalNumberDropping(int totalNumber);
+	
 }

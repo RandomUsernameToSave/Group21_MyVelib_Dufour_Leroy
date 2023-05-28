@@ -189,6 +189,17 @@ public class User {
 		
 		
 	}
+
+	public void returnBike(GPS gPSlocation, int duration) {
+		
+		this.currentBicycle.setUser(null);
+		this.currentBicycle.setGPS(gPSlocation);
+		this.currentBicycle.setTime(duration);
+	
+		totalCharge += (int)1.1*this.currentBicycle.accept(registrationCard);
+		
+		
+	}
 	
 	
 }
