@@ -59,5 +59,9 @@ public class GPS {
 		double[] latLongDouble = {Double.parseDouble(latLong[0]),Double.parseDouble(latLong[1])};
 		return new GPS(latLongDouble[0],latLongDouble[1]);
 	}
+	@Override
+	public String toString() {
+		return "(lat ="+x+", long ="+y+")";
+	}
 	
 }

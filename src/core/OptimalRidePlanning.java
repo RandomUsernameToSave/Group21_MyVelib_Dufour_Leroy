@@ -48,7 +48,7 @@ public class OptimalRidePlanning implements RidePlanningStrategy {
 
 		DockingStation endStation = null;
 		DockingStation startingStation = null;
-		
+
 		Comparator<DockingStation> endGPS_distance_comparator = new Comparator<DockingStation>() {
 			
 		    public int compare(DockingStation DS1, DockingStation DS2) {
@@ -98,6 +98,7 @@ public class OptimalRidePlanning implements RidePlanningStrategy {
         }
 		
 		
+
 		
 		return new DockingStation[] {endStation,startingStation};
 		

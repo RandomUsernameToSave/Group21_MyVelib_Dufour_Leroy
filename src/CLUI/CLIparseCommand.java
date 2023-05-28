@@ -1,6 +1,7 @@
 package CLUI;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.UUID;
 
@@ -11,7 +12,9 @@ import core.CardsFactory;
 import core.DockingStation;
 import core.GPS;
 import core.Manager;
+import core.OptimalRidePlanning;
 import core.Parking;
+import core.RidePlanningStrategy;
 import core.StandardStation;
 import core.User;
 
@@ -257,14 +260,14 @@ public class CLIparseCommand {
         else if (parts[0].equalsIgnoreCase("help")) {
         	System.out.println(displayHelp());
         }
-        else if (parts[0].equalsIgnoreCase("runtest") && parts.length==2) {
+        else if (parts[0].equalsIgnoreCase("runtest") & parts.length==2) {
         	//initialize
         	runtest(-1);
         	runtest(Integer.parseInt(parts[1]));
         }
 		
         else {
-            System.out.println("Invalid command. Please try again.");
+            System.out.println("Invalid test command. Please try again.");
         }
 	}
 	
@@ -330,6 +333,9 @@ public class CLIparseCommand {
                 else if (parts[0].equalsIgnoreCase("help")) {
                 	System.out.println(displayHelp());
                 }
+                else if (parts[0].equalsIgnoreCase("planningRide") & parts.length==4) {
+                	planningRide(parts[1],parts[2],parts[3] );
+                }
                 else {
                     System.out.println("Invalid command. Please try again.");
                 }
@@ -343,6 +349,17 @@ public class CLIparseCommand {
             }catch (Exception e){//Catch exception if any
               System.err.println("Error: " + e.getMessage());
             }
+		
+	}
+	public void planningRide(String GPS1,String GPS2,String bikeType) {
+		Collection<DockingStation> values = defaultNetwork.getStations().values();
+    	
+    	ArrayList<DockingStation> stationList= new ArrayList<DockingStation>(values);
+
+		DockingStation[] plan = (new OptimalRidePlanning()).RidePlanning(GPS.fromString(GPS1),GPS.fromString(GPS2),stationList,bikeType); 
+
+		System.out.println("Here is your starting station GPS: "+ plan[0].getGPS());
+		System.out.println("Here is your ending station GPS: "+ plan[1].getGPS());
 		
 	}
 }

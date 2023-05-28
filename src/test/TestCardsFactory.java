@@ -1,3 +1,28 @@
+package test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import core.GPS;
+import core.MechanicalBicycle;
+
+import java.util.ArrayList;
+import java.util.UUID;
+import core.CardsFactory;
+import core.User;
+import core.Bicycle;
+import core.BicycleFactory;
+import core.DockingStation;
+import core.ElectricalBicycle;
+import core.Parking;
+import core.StandardStation;
+import core.plusStation;
+import core.Cards;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+class TestCardsFactory {
+
 	@Test
 	public void testPriceVlibreElectricalBicycleFirstHour() {
 		CardsFactory Factory = new CardsFactory();
@@ -46,3 +71,4 @@
 	    // Assert the price charged to the user
 	    assertEquals(2, result);
 	}
+}

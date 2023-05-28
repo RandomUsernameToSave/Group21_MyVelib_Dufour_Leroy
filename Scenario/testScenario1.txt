@@ -1,1 +1,5 @@
-offline 
+offline velib cfcd2084-95d5-35ef-a6e7-dff9f98764da
+display velib
+offline velib c4ca4238-a0b9-3382-8dcc-509a6f75849b
+online velib cfcd2084-95d5-35ef-a6e7-dff9f98764da
+display velib

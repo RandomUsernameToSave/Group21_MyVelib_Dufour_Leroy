@@ -129,5 +129,8 @@ public class Manager {
     displayOfflineStations();
     displayUsers();
     }
+    public HashMap<UUID, DockingStation> getStations() {
+    	return stations;
+    }
     
 }

@@ -286,12 +286,12 @@ public class StandardStation implements DockingStation{
 		public boolean hasBikeType(String bikeType) {
 	        
 	        for (Parking place : listSlots) {
-	        	if (bikeType == "Electrical") {
+	        	if (bikeType.equalsIgnoreCase("Electrical") ) {
 	        		if (place.getCurrentBicycle() instanceof ElectricalBicycle) {
 		                return true;
 		            }
 	        	}
-	        	if (bikeType == "Mechanical") {
+	        	if (bikeType.equalsIgnoreCase("Mechanical")) {
 	        		if (place.getCurrentBicycle() instanceof MechanicalBicycle) {
 		                return true;
 		            }
