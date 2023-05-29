@@ -122,107 +122,409 @@ class TestCardsFactory {
 	    int result = card.visit(bike);
 	    
 	    // Assert the price charged to the user
-	    assertEquals(3, result);
+	    assertEquals(6, result);
 	}
 //The following set of test is for users with Vlibre
-@Test
-	public void testPriceVlibreElectricalBicycleFirstHour() {
+	@Test
+	public void testPriceVlibreElectricalBicycleFirstHourNoTimeBalance() {
 		CardsFactory Factory = new CardsFactory();
 		Cards card = Factory.getCards("Vlibre");
+		
 	    ElectricalBicycle bike = new ElectricalBicycle();
-	    bike.setTime(20);
+	    GPS gps = new GPS(48.8566, 2.3522);
+        StandardStation station = new StandardStation(5, gps);
+	    User Thomas = new User("Thomas", UUID.randomUUID(), card);
+	    Thomas.setCurrentBicycle(bike);
+	    bike.setUser(Thomas);
+		Thomas.setTimecreditBalance(0);
+		Thomas.setTotalCharge(1);
+		Thomas.returnBike(station,20);
 	    
-	    int result = card.visit(bike);
+	    //Assert Total Charge correctly changed
+	    assertEquals(2, Thomas.gettotalCharge());
+	    //Assert correct time balance
+	    assertEquals(40, Thomas.getTimecreditBalance());
+	}
+	
+	@Test
+	public void testPriceVlibreElectricalBicycleFirstHourUnderTimeBalance() {
+		CardsFactory Factory = new CardsFactory();
+		Cards card = Factory.getCards("Vlibre");
+		GPS gps = new GPS(48.8566, 2.3522);
+        StandardStation station = new StandardStation(5, gps);
+	    ElectricalBicycle bike = new ElectricalBicycle();
+	    User Thomas = new User("Thomas", UUID.randomUUID(), card);
+	    Thomas.setCurrentBicycle(bike);
+	    bike.setUser(Thomas);
+		Thomas.setTimecreditBalance(25);
+		Thomas.setTotalCharge(1);
+	    Thomas.returnBike(station,20);
 	    
-	    // Assert the price charged to the user
-	    assertEquals(1, result);
+	    //Assert Total Charge correctly changed
+	    assertEquals(1, Thomas.gettotalCharge());
+	    //Assert Total Charge correctly changed
+	    assertEquals(5, Thomas.getTimecreditBalance());
 	}
 	@Test
-	public void testPriceVlibreElectricalBicycleAfterFirstHour() {
+	public void testPriceVlibreElectricalBicycleFirstHourOverTimeBalance() {
 		CardsFactory Factory = new CardsFactory();
 		Cards card = Factory.getCards("Vlibre");
+		GPS gps = new GPS(48.8566, 2.3522);
+        StandardStation station = new StandardStation(5, gps);
 	    ElectricalBicycle bike = new ElectricalBicycle();
-	    bike.setTime(140);
+	    User Thomas = new User("Thomas", UUID.randomUUID(), card);
+	    Thomas.setCurrentBicycle(bike);
+	    bike.setUser(Thomas);
+		Thomas.setTimecreditBalance(10);
+		Thomas.setTotalCharge(1);
+		Thomas.returnBike(station,20);
 	    
-	    int result = card.visit(bike);
-	    
-	    // Assert the price charged to the user
-	    assertEquals(5, result);
+	    //Assert Total Charge correctly changed
+	    assertEquals(2, Thomas.gettotalCharge());
+	    //Assert Total Charge correctly changed
+	    assertEquals(50, Thomas.getTimecreditBalance());
 	}
 	@Test
-	public void testPriceVlibreMechanicalBicycleFirstHour() {
+	public void testPriceVlibreElectricalBicycleAfterHourNoTimeBalance() {
 		CardsFactory Factory = new CardsFactory();
 		Cards card = Factory.getCards("Vlibre");
-		User user = new User("Thomas", UUID.randomUUID(), card);
+		
 	    ElectricalBicycle bike = new ElectricalBicycle();
-	    bike.setTime(20);
+	    GPS gps = new GPS(48.8566, 2.3522);
+        StandardStation station = new StandardStation(5, gps);
+	    User Thomas = new User("Thomas", UUID.randomUUID(), card);
+	    Thomas.setCurrentBicycle(bike);
+	    bike.setUser(Thomas);
+		Thomas.setTimecreditBalance(0);
+		Thomas.setTotalCharge(1);
+		Thomas.returnBike(station,140);
 	    
-	    int result = bike.accept(card);
-	    
-	    // Assert the price charged to the user
-	    assertEquals(0, result);
+	    //Assert Total Charge correctly changed
+	    assertEquals(6, Thomas.gettotalCharge());
+	    //Assert Total Charge unchanged
+	    assertEquals(40, Thomas.getTimecreditBalance());
+	}
+	
+	@Test
+	public void testPriceVlibreElectricalBicycleAfterFirstHourUnderTimeBalance() {
+		CardsFactory Factory = new CardsFactory();
+		Cards card = Factory.getCards("Vlibre");
+		
+	    ElectricalBicycle bike = new ElectricalBicycle();
+	    GPS gps = new GPS(48.8566, 2.3522);
+        StandardStation station = new StandardStation(5, gps);
+	    User Thomas = new User("Thomas", UUID.randomUUID(), card);
+	    Thomas.setCurrentBicycle(bike);
+	    bike.setUser(Thomas);
+		Thomas.setTimecreditBalance(25);
+		Thomas.setTotalCharge(1);
+		Thomas.returnBike(station,140);
+		
+	    //Assert Total Charge correctly changed
+	    assertEquals(4, Thomas.gettotalCharge());
+	    //Assert Total Charge correctly changed
+	    assertEquals(55, Thomas.getTimecreditBalance());
 	}
 	@Test
-	public void testPriceVlibreMechanicalBicycleAfterFirstHour() {
+	public void testPriceVlibreElectricalBicycleAfterFirstHourOverTimeBalance() {
 		CardsFactory Factory = new CardsFactory();
 		Cards card = Factory.getCards("Vlibre");
+		
 	    ElectricalBicycle bike = new ElectricalBicycle();
-	    bike.setTime(140);
+	    GPS gps = new GPS(48.8566, 2.3522);
+        StandardStation station = new StandardStation(5, gps);
+	    User Thomas = new User("Thomas", UUID.randomUUID(), card);
+	    Thomas.setCurrentBicycle(bike);
+	    bike.setUser(Thomas);
+		Thomas.setTimecreditBalance(10);
+		Thomas.setTotalCharge(1);
+		Thomas.returnBike(station,140);
+		
+	    //Assert Total Charge correctly changed
+	    assertEquals(6, Thomas.gettotalCharge());
+	    //Assert Total Charge correctly changed
+	    assertEquals(50, Thomas.getTimecreditBalance());
+	} 
+	@Test
+	public void testPriceVlibreMechanicalBicycleFirstHourNoTimeBalance() {
+		CardsFactory Factory = new CardsFactory();
+		Cards card = Factory.getCards("Vlibre");
+		MechanicalBicycle bike = new MechanicalBicycle();
+		GPS gps = new GPS(48.8566, 2.3522);
+        StandardStation station = new StandardStation(5, gps);
+	    User Thomas = new User("Thomas", UUID.randomUUID(), card);
+	    Thomas.setCurrentBicycle(bike);
+	    bike.setUser(Thomas);
+		Thomas.setTimecreditBalance(0);
+		Thomas.setTotalCharge(1);
 	    
-	    int result = card.visit(bike);
+		Thomas.returnBike(station,20);
+	    //Assert Total Charge correctly changed
+	    assertEquals(1, Thomas.gettotalCharge());
+	    //Assert Total Charge unchanged
+	    assertEquals(0, Thomas.getTimecreditBalance());
+	}
+	@Test
+	public void testPriceVlibreMechanicalBicycleAfterFirstHourNoTimeBalance() {
+		CardsFactory Factory = new CardsFactory();
+		Cards card = Factory.getCards("Vlibre");
+		MechanicalBicycle bike = new MechanicalBicycle();
+	    User Thomas = new User("Thomas", UUID.randomUUID(), card);
+	    Thomas.setCurrentBicycle(bike);
+	    bike.setUser(Thomas);
+		Thomas.setTimecreditBalance(0);
+		Thomas.setTotalCharge(1);
+		GPS gps = new GPS(48.8566, 2.3522);
+        StandardStation station = new StandardStation(5, gps);
 	    
-	    // Assert the price charged to the user
-	    assertEquals(2, result);
+	    Thomas.returnBike(station,140);
+	    
+	    
+	    //Assert Total Charge correctly changed
+	    assertEquals(4, Thomas.gettotalCharge());
+	    //Assert Total Charge unchanged
+	    assertEquals(40, Thomas.getTimecreditBalance());
+	}
+	@Test
+	public void testPriceVlibreMechanicalBicycleAfterFirstHourUnderTimeBalance() {
+		CardsFactory Factory = new CardsFactory();
+		Cards card = Factory.getCards("Vlibre");
+		MechanicalBicycle bike = new MechanicalBicycle();
+		GPS gps = new GPS(48.8566, 2.3522);
+        StandardStation station = new StandardStation(5, gps);
+	    User Thomas = new User("Thomas", UUID.randomUUID(), card);
+	    Thomas.setCurrentBicycle(bike);
+	    bike.setUser(Thomas);
+		Thomas.setTimecreditBalance(25);
+		Thomas.setTotalCharge(1);
+	    
+		Thomas.returnBike(station,140);
+		
+	    //Assert Total Charge correctly changed
+	    assertEquals(2, Thomas.gettotalCharge());
+	    //Assert Total Charge unchanged
+	    assertEquals(55, Thomas.getTimecreditBalance());
+	}
+	@Test
+	public void testPriceVlibreMechanicalBicycleAfterFirstHourOverTimeBalance() {
+		CardsFactory Factory = new CardsFactory();
+		Cards card = Factory.getCards("Vlibre");
+		MechanicalBicycle bike = new MechanicalBicycle();
+		GPS gps = new GPS(48.8566, 2.3522);
+        StandardStation station = new StandardStation(5, gps);
+	    User Thomas = new User("Thomas", UUID.randomUUID(), card);
+	    Thomas.setCurrentBicycle(bike);
+	    bike.setUser(Thomas);
+		Thomas.setTimecreditBalance(10);
+		Thomas.setTotalCharge(1);
+	    
+	    Thomas.returnBike(station,140);
+	    
+	    //Assert Total Charge correctly changed
+	    assertEquals(3, Thomas.gettotalCharge());
+	    //Assert Total Charge unchanged
+	    assertEquals(50, Thomas.getTimecreditBalance());
 	}
 
-//The following set of test is for users with Vmax Card
+	//The following set of test is for users with Vmax Card
+	
 	@Test
-	public void testPriceVmaxElectricalBicycleFirstHour() {
+	public void testPriceVmaxElectricalBicycleFirstHourNoTimeBalance() {
 		CardsFactory Factory = new CardsFactory();
 		Cards card = Factory.getCards("Vmax");
-		User user = new User("Alice",UUID.randomUUID(),card);
+		
 	    ElectricalBicycle bike = new ElectricalBicycle();
-	    bike.setTime(20);
-	    
-	    int result = card.visit(bike);
-	    
-	    // Assert the price charged to the user
-	    assertEquals(0, result);
+	    GPS gps = new GPS(48.8566, 2.3522);
+        StandardStation station = new StandardStation(5, gps);
+	    User Thomas = new User("Thomas", UUID.randomUUID(), card);
+	    Thomas.setCurrentBicycle(bike);
+	    bike.setUser(Thomas);
+		Thomas.setTimecreditBalance(0);
+		Thomas.setTotalCharge(1);
+		Thomas.returnBike(station,20);
+		
+	    //Assert Total Charge correctly changed
+	    assertEquals(1, Thomas.gettotalCharge());
+	    //Assert Time credit Balance unchanged
+	    assertEquals(0, Thomas.getTimecreditBalance());
 	}
 	@Test
-	public void testPriceVmaxElectricalBicycleAfterFirstHour() {
+	public void testPriceVmaxElectricalBicycleAfterHourNoTimeBalance() {
 		CardsFactory Factory = new CardsFactory();
 		Cards card = Factory.getCards("Vmax");
+		
 	    ElectricalBicycle bike = new ElectricalBicycle();
-	    bike.setTime(140);
-	    
-	    int result = card.visit(bike);
-	    
-	    // Assert the price charged to the user
-	    assertEquals(2, result);
+	    GPS gps = new GPS(48.8566, 2.3522);
+        StandardStation station = new StandardStation(5, gps);
+	    User Thomas = new User("Thomas", UUID.randomUUID(), card);
+	    Thomas.setCurrentBicycle(bike);
+	    bike.setUser(Thomas);
+		Thomas.setTimecreditBalance(0);
+		Thomas.setTotalCharge(1);
+		Thomas.returnBike(station,140);
+		
+	    //Assert Total Charge correctly changed
+	    assertEquals(3, Thomas.gettotalCharge());
+	    //Assert Total Charge unchanged
+	    assertEquals(40, Thomas.getTimecreditBalance());
 	}
+	
 	@Test
-	public void testPriceVmaxMechanicalBicycleFirstHour() {
+	public void testPriceVmaxElectricalBicycleAfterFirstHourUnderTimeBalance() {
 		CardsFactory Factory = new CardsFactory();
 		Cards card = Factory.getCards("Vmax");
+		
 	    ElectricalBicycle bike = new ElectricalBicycle();
-	    bike.setTime(20);
-	    
-	    int result = card.visit(bike);
-	    
-	    // Assert the price charged to the user
-	    assertEquals(0, result);
+	    GPS gps = new GPS(48.8566, 2.3522);
+        StandardStation station = new StandardStation(5, gps);
+	    User Thomas = new User("Thomas", UUID.randomUUID(), card);
+	    Thomas.setCurrentBicycle(bike);
+	    bike.setUser(Thomas);
+		Thomas.setTimecreditBalance(25);
+		Thomas.setTotalCharge(1);
+		Thomas.returnBike(station,140);
+		
+	    //Assert Total Charge correctly changed
+	    assertEquals(2, Thomas.gettotalCharge());
+	    //Assert Total Charge correctly changed
+	    assertEquals(55, Thomas.getTimecreditBalance());
 	}
 	@Test
-	public void testPriceVmaxMechanicalBicycleAfterFirstHour() {
+	public void testPriceVmaxElectricalBicycleAfterFirstHourOverTimeBalance() {
 		CardsFactory Factory = new CardsFactory();
-		Cards card = Factory.getCards("max");
+		Cards card = Factory.getCards("Vmax");
+		
 	    ElectricalBicycle bike = new ElectricalBicycle();
-	    bike.setTime(140);
-	    
-	    int result = card.visit(bike);
-	    
-	    // Assert the price charged to the user
-	    assertEquals(2, result);
+	    GPS gps = new GPS(48.8566, 2.3522);
+        StandardStation station = new StandardStation(5, gps);
+	    User Thomas = new User("Thomas", UUID.randomUUID(), card);
+	    Thomas.setCurrentBicycle(bike);
+	    bike.setUser(Thomas);
+		Thomas.setTimecreditBalance(10);
+		Thomas.setTotalCharge(1);
+		Thomas.returnBike(station,140);
+		
+	    //Assert Total Charge correctly changed
+	    assertEquals(3, Thomas.gettotalCharge());
+	    //Assert Total Charge correctly changed
+	    assertEquals(50, Thomas.getTimecreditBalance());
+	} 
+	@Test
+	public void testPriceVmaxMechanicalBicycleFirstHourNoTimeBalance() {
+		CardsFactory Factory = new CardsFactory();
+		Cards card = Factory.getCards("Vmax");
+		
+		MechanicalBicycle bike = new MechanicalBicycle();
+		GPS gps = new GPS(48.8566, 2.3522);
+        StandardStation station = new StandardStation(5, gps);
+	    User Thomas = new User("Thomas", UUID.randomUUID(), card);
+	    Thomas.setCurrentBicycle(bike);
+	    bike.setUser(Thomas);
+		Thomas.setTimecreditBalance(0);
+		Thomas.setTotalCharge(1);
+		Thomas.returnBike(station,20);
+		
+	    //Assert Total Charge correctly changed
+	    assertEquals(1, Thomas.gettotalCharge());
+	    //Assert Time credit Balance unchanged
+	    assertEquals(0, Thomas.getTimecreditBalance());
 	}
+	@Test
+	public void testPriceVmaxMechanicalBicycleAfterHourNoTimeBalance() {
+		CardsFactory Factory = new CardsFactory();
+		Cards card = Factory.getCards("Vmax");
+		
+		MechanicalBicycle bike = new MechanicalBicycle();
+		GPS gps = new GPS(48.8566, 2.3522);
+        StandardStation station = new StandardStation(5, gps);
+	    User Thomas = new User("Thomas", UUID.randomUUID(), card);
+	    Thomas.setCurrentBicycle(bike);
+	    bike.setUser(Thomas);
+		Thomas.setTimecreditBalance(0);
+		Thomas.setTotalCharge(1);
+		Thomas.returnBike(station,140);
+		
+	    //Assert Total Charge correctly changed
+	    assertEquals(3, Thomas.gettotalCharge());
+	    //Assert Total Charge unchanged
+	    assertEquals(40, Thomas.getTimecreditBalance());
+	}
+	
+	@Test
+	public void testPriceVmaxMechanicalBicycleAfterFirstHourUnderTimeBalance() {
+		CardsFactory Factory = new CardsFactory();
+		Cards card = Factory.getCards("Vmax");
+		
+		MechanicalBicycle bike = new MechanicalBicycle();
+		GPS gps = new GPS(48.8566, 2.3522);
+        StandardStation station = new StandardStation(5, gps);
+	    User Thomas = new User("Thomas", UUID.randomUUID(), card);
+	    Thomas.setCurrentBicycle(bike);
+	    bike.setUser(Thomas);
+		Thomas.setTimecreditBalance(25);
+		Thomas.setTotalCharge(1);
+		Thomas.returnBike(station,140);
+		
+	    //Assert Total Charge correctly changed
+	    assertEquals(2, Thomas.gettotalCharge());
+	    //Assert Total Charge correctly changed
+	    assertEquals(55, Thomas.getTimecreditBalance());
+	}
+	@Test
+	public void testPriceVmaxMechanicalBicycleAfterFirstHourOverTimeBalance() {
+		CardsFactory Factory = new CardsFactory();
+		Cards card = Factory.getCards("Vmax");
+		
+		MechanicalBicycle bike = new MechanicalBicycle();
+		GPS gps = new GPS(48.8566, 2.3522);
+        StandardStation station = new StandardStation(5, gps);
+	    User Thomas = new User("Thomas", UUID.randomUUID(), card);
+	    Thomas.setCurrentBicycle(bike);
+	    bike.setUser(Thomas);
+		Thomas.setTimecreditBalance(10);
+		Thomas.setTotalCharge(1);
+		Thomas.returnBike(station,140);
+		
+	    //Assert Total Charge correctly changed
+	    assertEquals(3, Thomas.gettotalCharge());
+	    //Assert Total Charge correctly changed
+	    assertEquals(50, Thomas.getTimecreditBalance());
+	} 
+	
+	@Test
+	public void testStationPlusFirstHour() {
+		CardsFactory Factory = new CardsFactory();
+		Cards card = Factory.getCards("Vmax");
+		
+		MechanicalBicycle bike = new MechanicalBicycle();
+		GPS gps = new GPS(48.8566, 2.3522);
+        plusStation station = new plusStation(5, gps);
+	    User Thomas = new User("Thomas", UUID.randomUUID(), card);
+	    Thomas.setCurrentBicycle(bike);
+	    bike.setUser(Thomas);
+		Thomas.setTimecreditBalance(10);
+		Thomas.returnBike(station,30);
+		
+	    //Assert Total Charge correctly changed
+	    assertEquals(15, Thomas.getTimecreditBalance());
+	} 
+	
+	@Test
+	public void testStationPlusAfterFirstHour() {
+		CardsFactory Factory = new CardsFactory();
+		Cards card = Factory.getCards("Vmax");
+		
+		MechanicalBicycle bike = new MechanicalBicycle();
+		GPS gps = new GPS(48.8566, 2.3522);
+        plusStation station = new plusStation(5, gps);
+	    User Thomas = new User("Thomas", UUID.randomUUID(), card);
+	    Thomas.setCurrentBicycle(bike);
+	    bike.setUser(Thomas);
+		Thomas.setTimecreditBalance(10);
+		Thomas.returnBike(station,140);
+		
+	    //Assert Total Charge correctly changed
+	    assertEquals(55, Thomas.getTimecreditBalance());
+	} 
+	
 }
