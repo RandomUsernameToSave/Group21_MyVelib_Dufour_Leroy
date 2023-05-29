@@ -1,6 +1,7 @@
 package CLUI;
 
 import java.util.ArrayList;
+
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.UUID;
@@ -23,6 +24,10 @@ import java.io.FileOutputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.*;
+
+/**
+ * Command parser and manager*/
+
 public class CLIparseCommand {
 
 	private Manager defaultNetwork = new Manager();;
@@ -30,7 +35,8 @@ public class CLIparseCommand {
 	private HashMap<String, Manager> networks = new HashMap<String, Manager>();
 	
 	public String displayHelp() {
-	String help = "setup <velibnetworkName> \n to create a myVelib network with given name and\r\n"
+	String help = "runtest TestNumber \nrun the test of the file /scenario/testScenario[TestNumber]"
+			+ "setup <velibnetworkName> \n to create a myVelib network with given name and\r\n"
 		+ "consisting of 10 stations each of which has 10 parking slots and such that stations\r\n"
 		+ "are arranged on a square grid whose of side 4km and initially populated with a 75%\r\n"
 		+ "bikes randomly distributed over the 10 stations\r\n\n"

@@ -2,6 +2,8 @@ package core;
 
 import java.util.UUID;
 
+/***
+ * Parking of a bicycle : used in DockingStations*/
 public class Parking {
 	private UUID parkingID;
 	private String parkingState;// free, occupied, out-of-order est ce que là on ferait pas un enum?

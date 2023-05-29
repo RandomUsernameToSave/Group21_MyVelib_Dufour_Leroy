@@ -3,7 +3,7 @@ package core;
 import java.util.UUID;
 
 /**
- * Vlibre Card implementation 
+ * Vlibre Card implementation : calculate cost and identify a user
  * */
 public class Vlibre implements Cards {
 
@@ -22,12 +22,12 @@ public class Vlibre implements Cards {
 
 
 	/**
-	 * <h1>Visit an electrical bike to calculate cost</h1>
+	 * <H1>Visit an electrical bike to calculate cost</H1>
 	 * Return the price that should be charged to the user
 	 * Automatically handle setting of time credit balance
 	 * 
 	 * 
-	 * <h3>Beware !</h3> if the time of the bike is not correctly set, the visit won't retunr the good result.
+	 * <H3>Beware !</H3> if the time of the bike is not correctly set, the visit won't retunr the good result.
 	 * @param bike The bike visited according to visitor pattern
 	 * 
 	 * Example : 
@@ -73,12 +73,12 @@ public class Vlibre implements Cards {
 	}
 
 	/**
-	 * <h1>Visit a mechanical bike to calculate cost</h1>
+	 * <H1>Visit a mechanical bike to calculate cost</H1>
 	 * Return the price that should be charged to the user
 	 * Automatically handle setting of time credit balance
 	 * 
 	 * 
-	 * <h3>Beware !</h3> if the time of the bike is not correctly set, the visit won't retunr the good result.
+	 * <H3>Beware !</H3> if the time of the bike is not correctly set, the visit won't retunr the good result.
 	 * @param bike The bike visited according to visitor pattern
 	 * 
 	 * Example : 

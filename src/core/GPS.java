@@ -1,7 +1,8 @@
 package core;
 
 import java.util.UUID;
-
+/**
+ * GPS object using (lat,long) coordinates calculate the distance accordingly*/
 public class GPS {
 
 	private double x;

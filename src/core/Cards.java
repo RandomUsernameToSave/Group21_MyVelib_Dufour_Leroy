@@ -1,5 +1,7 @@
 package core;
 
+/**
+ * Cards interface : 3 types : No Card, Vlibre, Vmax*/
 public interface Cards {
 
 	public String getCardType();

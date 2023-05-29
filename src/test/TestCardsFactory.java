@@ -153,10 +153,11 @@ class TestCardsFactory {
 	public void testPriceVlibreMechanicalBicycleFirstHour() {
 		CardsFactory Factory = new CardsFactory();
 		Cards card = Factory.getCards("Vlibre");
+		User user = new User("Thomas", UUID.randomUUID(), card);
 	    ElectricalBicycle bike = new ElectricalBicycle();
 	    bike.setTime(20);
 	    
-	    int result = card.visit(bike);
+	    int result = bike.accept(card);
 	    
 	    // Assert the price charged to the user
 	    assertEquals(0, result);

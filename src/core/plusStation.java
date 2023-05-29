@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-
+/**
+ * Plus station implementation : handle picking a bike and returning a bike 
+ * Composed of an array of parking*/
 public class plusStation implements DockingStation {
 	private UUID stationID;
 	private boolean onService;

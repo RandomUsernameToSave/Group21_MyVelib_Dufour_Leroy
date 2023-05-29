@@ -2,6 +2,9 @@ package core;
 
 import java.util.UUID;
 
+/**
+ * User object : is able to rent and return a bike, calculate cost and add to the user 
+ * accordingly*/
 public class User {
 
 	/**

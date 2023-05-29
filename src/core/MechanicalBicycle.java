@@ -2,6 +2,8 @@ package core;
 
 import java.util.UUID;
 
+/**
+ * Mechanical Bicycle implementation*/
 public class MechanicalBicycle implements Bicycle{
 	private UUID bicycleID;
 	private GPS bicycleGPS;

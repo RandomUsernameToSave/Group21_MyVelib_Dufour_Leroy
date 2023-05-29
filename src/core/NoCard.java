@@ -1,5 +1,8 @@
 package core;
 
+/**
+ * No Card implementation : calculate cost and identify a user
+ * */
 public class NoCard implements Cards {
 
 	

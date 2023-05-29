@@ -3,7 +3,9 @@ package core;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.UUID;
-
+/**
+ * Docking station Interface : 2 types : plus Station and standard station
+ * */
 public interface DockingStation {
 
 	public GPS getGPS();

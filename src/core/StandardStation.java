@@ -3,6 +3,9 @@ package core;
 import java.util.ArrayList;
 import java.util.UUID;
 
+/**
+ * Standard station implementation : handle picking a bike and returning a bike 
+ * Composed of an array of parking*/
 public class StandardStation implements DockingStation{
 	private UUID stationID;
 	private boolean onService;
