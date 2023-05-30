@@ -236,7 +236,7 @@ public class plusStation implements DockingStation {
 		if (this.countFreePlaces()>0) {
 			Parking parking = this.getFreeParking();
 			Bicycle bike = user.getCurrentBicycle();
-			
+			user.setTimecreditBalance(5+user.getTimecreditBalance());
 			parking.changeState("occupied");
 			parking.setCurrentBicycle(bike);
 			user.setCurrentBicycle(null);
